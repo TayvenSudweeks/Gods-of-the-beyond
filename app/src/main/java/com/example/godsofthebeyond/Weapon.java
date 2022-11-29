@@ -18,7 +18,7 @@ public class Weapon {
             this.magVal = 0;
             this.accVal = 80;
             this.jobReq = "knight";
-        } else if(weaponName == "skeleton king's sword"){
+        } else if(weaponName == "kingdom key"){
             this.strVal = 7;
             this.magVal = 3;
             this.accVal = 90;
@@ -43,7 +43,7 @@ public class Weapon {
             this.magVal = 5;
             this.accVal = 90;
             this.jobReq = "alchemist";
-        } else if(weaponName == "limited edition chemistry set"){
+        } else if(weaponName == "chemistry-inator"){
             this.strVal = 0;
             this.magVal = 6;
             this.accVal = 85;
@@ -68,16 +68,21 @@ public class Weapon {
             this.magVal = 1;
             this.accVal = 90;
             this.jobReq = "hunter";
-        } else if(weaponName == "spirit's guide"){
+        } else if(weaponName == "galadhrim's bow"){
             this.strVal = 4;
             this.magVal = 5;
-            this.accVal = 85;
+            this.accVal = 90;
             this.jobReq = "hunter";
-        } else if(weaponName == "" ){
-
-
-        } else if(weaponName == "" ){
-
+        } else if(weaponName == "recurve bow" ){
+            this.strVal = 3;
+            this.magVal = 2;
+            this.accVal = 100;
+            this.jobReq = "hunter";
+        } else if(weaponName == "sling" ){
+            this.strVal = 6;
+            this.magVal = 4;
+            this.accVal = 65;
+            this.jobReq = "hunter";
         } else if(weaponName == "throwing knife"){
             this.strVal = 3;
             this.magVal = 1;
@@ -88,7 +93,7 @@ public class Weapon {
             this.magVal = 2;
             this.accVal = 90;
             this.jobReq = "mercenary";
-        } else if(weaponName == "wrist blade"){
+        } else if(weaponName == "hidden blade"){
             this.strVal = 2;
             this.magVal = 4;
             this.accVal = 90;
