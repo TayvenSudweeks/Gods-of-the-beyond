@@ -7,21 +7,78 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvOutput"
         android:layout_width="401dp"
         android:layout_height="264dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="8dp"
         android:text="test"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        tools:layout_editor_absoluteX="5dp"
-        tools:layout_editor_absoluteY="8dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/etInput"
         android:layout_width="250dp"
         android:layout_height="52dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="80dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
-        tools:layout_editor_absoluteX="80dp"
-        tools:layout_editor_absoluteY="454dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvOptions" />
+
+    <TextView
+        android:id="@+id/tvOptions"
+        android:layout_width="253dp"
+        android:layout_height="82dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="80dp"
+        android:text="Options"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvOutput" />
+
+    <TextView
+        android:id="@+id/tvChar1"
+        android:layout_width="146dp"
+        android:layout_height="227dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="74dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etInput" />
+
+    <TextView
+        android:id="@+id/tvChar2"
+        android:layout_width="141dp"
+        android:layout_height="224dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginBottom="4dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tvChar3"
+        app:layout_constraintStart_toEndOf="@+id/tvChar1" />
+
+    <TextView
+        android:id="@+id/tvChar3"
+        android:layout_width="123dp"
+        android:layout_height="222dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="7dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvChar2" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="16dp"
+        android:onClick="SubmitText"
+        android:text="Submit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etInput" />
 </androidx.constraintlayout.widget.ConstraintLayout>
