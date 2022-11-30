@@ -88,9 +88,10 @@ public class Character {
         this.evade = armor.getEvade();
     }
 
-    public void setMaxReso(int resolve){
+    public void setupCharacter(){
 
-        this.maxReso += job.getBaseReso();
+        this.maxReso = job.getBaseReso();
+        this.maxSan = job.getBaseSan();
 
     }
 

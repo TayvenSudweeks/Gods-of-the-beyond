@@ -28,7 +28,7 @@ public class Weapon {
             this.magVal = 0;
             this.accVal = 100;
             this.jobReq = "knight";
-        } else if(weaponName == "Axe"){
+        } else if(weaponName == "axe"){
             this.strVal = 8;
             this.magVal = 0;
             this.accVal = 70;
@@ -123,8 +123,16 @@ public class Weapon {
             this.magVal = 0;
             this.accVal = 90;
             this.jobReq = "grappler";
-        } else if(weaponName == ""){
-            
+        } else if(weaponName == "spiked dusters"){
+            this.strVal = 6;
+            this.magVal = 2;
+            this.accVal = 75;
+            this.jobReq = "grappler";
+        } else if(weaponName == "beast claws"){
+            this.strVal = 5;
+            this.magVal = 4;
+            this.accVal = 80;
+            this.jobReq = "grappler";
         }
     }
 
