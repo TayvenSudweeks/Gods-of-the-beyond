@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void gameStart(){
 
+
     }
 
     public void SubmitText(View view){
