@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     public String input;
     EditText etInput;
     TextView output, tvOptions, char1, char2, char3;
+    Character character1, character2, character3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +32,14 @@ public class MainActivity extends AppCompatActivity {
         char2 = findViewById(R.id.tvChar2);
         char3 = findViewById(R.id.tvChar3);
         etInput = findViewById(R.id.etInput);
+        character1 = new Character();
+    }
+
+    public void makeCharacter(){
+
     }
 
     public void gameStart(){
-
-        output.setText("You find yourself in a massive church, covered in haunting markings");
-        tvOptions.setText("Knight, Alchemist, Hunter, Grappler, Mercenary");
 
     }
 
