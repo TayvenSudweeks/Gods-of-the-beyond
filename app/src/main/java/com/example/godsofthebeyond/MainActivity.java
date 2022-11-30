@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         output.setText("You find yourself in a massive church, covered in haunting markings");
         tvOptions.setText("Knight, Alchemist, Hunter, Grappler, Mercenary");
 
+
     }
 
     public void SubmitText(View view){
