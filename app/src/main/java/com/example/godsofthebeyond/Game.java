@@ -25,15 +25,16 @@ public class Game {
 
             }
 
-        }
+        } else return null;
 
+        return null;
     }
 
-    public String choicesText(){
+    //public String choicesText(){
 
 
 
-    }
+    //}
 
     public void setCharacters(String name, String job){
 

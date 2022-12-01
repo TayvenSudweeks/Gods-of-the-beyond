@@ -24,7 +24,7 @@ public class Character {
 
         this.name = name;
         this.job.name = job;
-
+        this.dead = false;
     }
 
     public int getCurrReso() {
@@ -76,7 +76,7 @@ public class Character {
                 "Max Sanity: " + this.maxSan + "\n" +
                 "Phys Attack: " + this.physAtk + "\n" +
                 "Magic Attack: " + this.magAtk + "\n" +
-                "Phys Defense: " + this.physdef + "\n" +
+                "Phys Defense: " + this.physDef + "\n" +
                 "Magic Defense: " + this.magDef + "\n" +
                 "Speed: " + this.spd + "\n";
     }
@@ -111,7 +111,7 @@ public class Character {
         this.maxSan = job.getBaseSan();
         this.currSan = job.getBaseSan();
         this.physAtk = job.getBasePhysAtk();
-        this.physdef = job.getBasePhysDef();
+        this.physDef = job.getBasePhysDef();
         this.magAtk = job.getBaseMagAtk();
         this.magDef = job.getBaseMagDef();
         this.spd = job.getBaseSpd();
