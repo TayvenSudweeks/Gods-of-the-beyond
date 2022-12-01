@@ -6,6 +6,7 @@ public class Database {
 
     private int weaponCount;
     Weapon[] weapons = new Weapon[25];
+    Armor[] armors = new Armor[15];
 
 
     public void createAllWeapons(){
@@ -38,12 +39,27 @@ public class Database {
 
     }
 
-
     public void createAllArmor(){
 
-
+        armors[0] = new Armor("heavy armor");
+        armors[1] = new Armor("light armor");
+        armors[2] = new Armor("destiny island attire");
+        armors[3] = new Armor("plague mask");
+        armors[4] = new Armor("steampunk hat");
+        armors[5] = new Armor("pharmacist-labcoat-inator");
+        armors[6] = new Armor("leather cloak");
+        armors[7] = new Armor("scaled cloak");
+        armors[8] = new Armor("elven cloak");
+        armors[9] = new Armor("chain mail");
+        armors[10] = new Armor("magic crest");
+        armors[11] = new Armor("assassin robes");
+        armors[12] = new Armor("white headband");
+        armors[13] = new Armor("blue headband");
+        armors[14] = new Armor("red spikes");
 
     }
+
+
 
     public Weapon getRandomWeapon(){
         int num = new Random().nextInt(25);

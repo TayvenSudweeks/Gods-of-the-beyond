@@ -37,7 +37,7 @@ public class Job {
             this.baseSan = 7;
             this.basePhysAtk = 9;
             this.baseMagAtk = 6;
-            this.basePhysDef = 2;
+            this.basePhysDef = 3;
             this.baseMagDef = 1;
             this.baseSpd = 4;
 
@@ -76,7 +76,7 @@ public class Job {
             this.baseSan = 7;
             this.basePhysAtk = 8;
             this.baseMagAtk = 2;
-            this.basePhysDef = 3;
+            this.basePhysDef = 4;
             this.baseMagDef = 4;
             this.baseSpd = 8;
 

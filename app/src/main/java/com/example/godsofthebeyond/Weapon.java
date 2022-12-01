@@ -96,7 +96,7 @@ public class Weapon {
             this.accVal = 90;
             this.jobReq = "mercenary";
         } else if(weaponName == "hidden blade"){
-            this.strVal = 2;
+            this.strVal = 4;
             this.magVal = 4;
             this.accVal = 90;
             this.jobReq = "mercenary";
