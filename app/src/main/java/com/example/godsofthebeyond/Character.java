@@ -31,6 +31,10 @@ public class Character {
         return currReso;
     }
 
+    public int getMaxReso() {
+        return maxReso;
+    }
+
     public int getCurrSan() {
         return currSan;
     }
