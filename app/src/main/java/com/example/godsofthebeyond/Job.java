@@ -37,7 +37,7 @@ public class Job {
             this.baseSan = 7;
             this.basePhysAtk = 9;
             this.baseMagAtk = 6;
-            this.basePhysDef = 2;
+            this.basePhysDef = 3;
             this.baseMagDef = 1;
             this.baseSpd = 4;
 
@@ -76,7 +76,7 @@ public class Job {
             this.baseSan = 7;
             this.basePhysAtk = 8;
             this.baseMagAtk = 2;
-            this.basePhysDef = 3;
+            this.basePhysDef = 4;
             this.baseMagDef = 4;
             this.baseSpd = 8;
 
@@ -96,46 +96,55 @@ public class Job {
 
     }
 
-    private int getBasePhysAtk(){
+    public int getBasePhysAtk(){
 
         return this.basePhysAtk;
 
     }
 
-    private int getBaseMagAtk(){
+    public int getBaseMagAtk(){
 
         return this.baseMagAtk;
 
     }
 
-    private int getBasePhysDef(){
+    public int getBasePhysDef(){
 
         return this.basePhysDef;
 
     }
 
-    private int getBaseMagDef(){
+    public int getBaseMagDef(){
 
         return this.baseMagDef;
 
     }
 
-    private int getBaseSpd(){
+    public int getBaseSpd(){
 
         return this.baseSpd;
 
     }
 
-    private String getSpecialty(){
+    public String getSpecialty(){
 
         return this.specialty;
 
     }
 
-    private int getSpecLevel(){
+    public int getSpecLevel(){
 
         return this.specLevel;
 
     }
+
+    public void setBaseMagAtk(int baseMagAtk) {
+        this.baseMagAtk = baseMagAtk;
+    }
+
+    public void setBaseMagDef(int baseMagDef) {
+        this.baseMagDef = baseMagDef;
+    }
+
 
 }

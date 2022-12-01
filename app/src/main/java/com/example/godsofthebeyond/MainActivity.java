@@ -37,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void SubmitText(View view){
         input = etInput.getText().toString().toLowerCase();
+
     }
-    
+
+
+
 }
