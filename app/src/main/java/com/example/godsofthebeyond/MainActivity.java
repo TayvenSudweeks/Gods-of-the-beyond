@@ -36,9 +36,9 @@ public class MainActivity extends AppCompatActivity {
         game = new Game();
     }
 
-    public void SubmitText(View view){
+    public String SubmitText(View view){
         input = etInput.getText().toString().toLowerCase();
-
+        return input;
     }
 
 

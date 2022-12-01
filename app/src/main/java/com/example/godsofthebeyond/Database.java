@@ -7,6 +7,7 @@ public class Database {
     private int weaponCount;
     Weapon[] weapons = new Weapon[25];
     Armor[] armors = new Armor[15];
+    Monster[] monsters = new Monster[10];
 
 
     public void createAllWeapons(){
@@ -39,7 +40,7 @@ public class Database {
 
     }
 
-    public void createAllArmor(){
+    public void createAllArmors(){
 
         armors[0] = new Armor("heavy armor");
         armors[1] = new Armor("light armor");
@@ -59,20 +60,86 @@ public class Database {
 
     }
 
-
+    public void createAllMonsters(){
+        monsters[0] = new Monster("slime");
+        monsters[1] = new Monster("skeleton");
+        monsters[2] = new Monster("overgrowth");
+        monsters[3] = new Monster("jailer");
+        monsters[4] = new Monster("goblin");
+        monsters[5] = new Monster("kobold");
+        monsters[6] = new Monster("eldritch draugr");
+        monsters[7] = new Monster("cult leader");
+        monsters[8] = new Monster("zombie");
+        monsters[9] = new Monster("mass of vines");
+    }
 
     public Weapon getRandomWeapon(){
         int num = new Random().nextInt(25);
         return weapons[num];
     }
 
-    public Weapon checkWorkingWeapon(String job1, String job2, String job3){
+    public Armor getRandomArmor(){
+        int num = new Random().nextInt(15);
+        return armors[num];
+    }
+
+    public Monster getRandomMonster(){
+        int num = new Random().nextInt(10);
+        return monsters[num];
+    }
+
+    public Weapon makeWeapon(String job1, String job2, String job3){
         Weapon reward = new Weapon();
         reward = getRandomWeapon();
         while(reward.getJobReq() != job1 && reward.getJobReq() != job2 && reward.getJobReq() != job3){
             reward = getRandomWeapon();
         }
         return reward;
+    }
+
+    public Weapon makeLegendaryWeapon(String job1, String job2, String job3){
+        Weapon reward = new Weapon();
+        reward = getRandomWeapon();
+        while(reward.getJobReq() != job1 && reward.getJobReq() != job2 && reward.getJobReq() != job3 && !reward.isLegendary()){
+            reward = getRandomWeapon();
+        }
+        return reward;
+    }
+
+    public Armor makeArmor(String job1, String job2, String job3){
+        Armor reward = new Armor();
+        reward = getRandomArmor();
+        while(reward.getJobReq() != job1 && reward.getJobReq() != job2 && reward.getJobReq() != job3){
+            reward = getRandomArmor();
+        }
+        return reward;
+    }
+
+    public Armor makeLegendaryArmor(String job1, String job2, String job3){
+        Armor reward = new Armor();
+        reward = getRandomArmor();
+        while(reward.getJobReq() != job1 && reward.getJobReq() != job2 && reward.getJobReq() != job3 && !reward.isLegendary()){
+            reward = getRandomArmor();
+        }
+        return reward;
+    }
+
+    public Monster makeFodderMonster(String roomReq){
+        Monster spawn = new Monster();
+        spawn = getRandomMonster();
+        while(spawn.getRoomtype() != roomReq || spawn.isBoss()){
+            spawn = getRandomMonster();
+        }
+        return spawn;
+    }
+
+    public Monster makeBossMonster(String roomReq){
+        Monster spawn = new Monster();
+        spawn = getRandomMonster();
+        while(spawn.getRoomtype() != roomReq || !spawn.isBoss()){
+            spawn = getRandomMonster();
+        }
+        return spawn;
     }
 
 }

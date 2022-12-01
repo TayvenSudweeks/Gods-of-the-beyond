@@ -4,6 +4,7 @@ public class Weapon {
     private String weaponName;
     private int strVal, magVal, accVal;
     private String jobReq;
+    private boolean legendary;
 
     Weapon(){
 
@@ -25,6 +26,7 @@ public class Weapon {
             this.magVal = 3;
             this.accVal = 90;
             this.jobReq = "knight";
+            this.legendary = true;
         } else if(weaponName == "rapier"){
             this.strVal = 3;
             this.magVal = 0;
@@ -46,10 +48,11 @@ public class Weapon {
             this.accVal = 90;
             this.jobReq = "alchemist";
         } else if(weaponName == "chemistry-inator"){
-            this.strVal = 0;
-            this.magVal = 6;
+            this.strVal = 1;
+            this.magVal = 7;
             this.accVal = 85;
             this.jobReq = "alchemist";
+            this.legendary = true;
         } else if(weaponName == "collector's bottle"){
             this.strVal = 1;
             this.magVal = 4;
@@ -75,6 +78,7 @@ public class Weapon {
             this.magVal = 5;
             this.accVal = 90;
             this.jobReq = "hunter";
+            this.legendary = true;
         } else if(weaponName == "recurve bow" ){
             this.strVal = 3;
             this.magVal = 2;
@@ -100,6 +104,7 @@ public class Weapon {
             this.magVal = 4;
             this.accVal = 90;
             this.jobReq = "mercenary";
+            this.legendary = true;
         } else if(weaponName == "shank"){
             this.strVal = 5;
             this.magVal = 1;
@@ -125,6 +130,7 @@ public class Weapon {
             this.magVal = 0;
             this.accVal = 90;
             this.jobReq = "grappler";
+            this.legendary = true;
         } else if(weaponName == "spiked dusters"){
             this.strVal = 6;
             this.magVal = 2;
@@ -156,6 +162,10 @@ public class Weapon {
 
     public int getStrVal() {
         return strVal;
+    }
+
+    public boolean isLegendary() {
+        return legendary;
     }
 
     public String toString() {
