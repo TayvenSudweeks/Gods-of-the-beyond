@@ -6,6 +6,7 @@ import java.util.Random;
 public class Fight {
     private int hitChance;
     private String first, second, third, fourth;
+    private String monsterTarget;
 
     public void playerAttack(Character attacker, Monster target){
         hitChance = new Random().nextInt(attacker.getAcc());
@@ -1089,6 +1090,31 @@ public class Fight {
 
     public void setTrap(Monster m1){
         m1.setPhysAtk(m1.getPhysAtk() - 2);
+    }
+
+    public String suplex(Character char1, Monster m1){
+        if(char1.getPhysAtk() > m1.getPhysAtk()){
+            m1.setCurrReso(m1.getCurrReso() - 14);
+            return "SMAAAAASHH!!";
+        } else
+            return "He's... too strong...";
+    }
+
+    public void taunt(Character char1){
+        monsterTarget = char1.name;
+    }
+
+    public void chooseTarget(Monster m1){
+        int target = new Random().nextInt(4);
+        switch (target) {
+            case 0: monsterTarget = fourth;
+            case 1: monsterTarget = third;
+            case 2: monsterTarget = second;
+            case 3: monsterTarget = first;
+        }
+        while(monsterTarget == m1.getMonsterName()){
+            chooseTarget(m1);
+        }
     }
 
 
