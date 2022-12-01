@@ -1,9 +1,12 @@
 package com.example.godsofthebeyond;
 
+import java.util.Random;
+
 public class Database {
 
     private int weaponCount;
     Weapon[] weapons = new Weapon[25];
+
 
     public void createAllWeapons(){
 
@@ -34,11 +37,26 @@ public class Database {
         weapons[24] = new Weapon("beast claws");
 
     }
-    
+
+
     public void createAllArmor(){
 
 
 
+    }
+
+    public Weapon getRandomWeapon(){
+        int num = new Random().nextInt(25);
+        return weapons[num];
+    }
+
+    public Weapon checkWorkingWeapon(String job1, String job2, String job3){
+        Weapon reward = new Weapon();
+        reward = getRandomWeapon();
+        while(reward.getJobReq() != job1 && reward.getJobReq() != job2 && reward.getJobReq() != job3){
+            reward = getRandomWeapon();
+        }
+        return reward;
     }
 
 }

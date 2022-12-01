@@ -5,7 +5,9 @@ public class Weapon {
     private int strVal, magVal, accVal;
     private String jobReq;
 
+    Weapon(){
 
+    }
     Weapon(String weaponName){
         this.weaponName = weaponName;
         if(weaponName == "claymore" ){
@@ -140,6 +142,10 @@ public class Weapon {
         return weaponName;
     }
 
+    public String getJobReq() {
+        return jobReq;
+    }
+
     public int getAccVal() {
         return accVal;
     }
@@ -156,7 +162,7 @@ public class Weapon {
         return "Weapon Name: " + this.weaponName + "\n" +
                 "Strength: " + this.strVal + "\n" +
                 "Magic: " + this.magVal + "\n" +
-                "Accuracy" + this.accVal;
+                "Accuracy: " + this.accVal;
 
     }
 

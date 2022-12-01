@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     EditText etInput;
     TextView output, tvOptions, char1, char2, char3;
     Character character1, character2, character3;
+    Database database = new Database();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +23,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         OnInit();
-
+        database.createAllWeapons();
+        System.out.println(database.checkWorkingWeapon("hunter", "mercenary", "knight").toString());
     }
 
     public void OnInit(){
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         char3 = findViewById(R.id.tvChar3);
         etInput = findViewById(R.id.etInput);
         character1 = new Character();
+        database = new Database();
     }
 
     public void makeCharacter(){
@@ -46,7 +49,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void SubmitText(View view){
         input = etInput.getText().toString().toLowerCase();
-        currentEvent();
+
     }
-    
+
+
+
 }
