@@ -87,6 +87,8 @@ public class Monster {
             this.spd = 3;
             this.roomtype = "garden";
             this.boss = true;
+        } else if(monsterName == ""){
+
         }
 
     }
