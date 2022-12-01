@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     public String input;
     EditText etInput;
     TextView output, tvOptions, char1, char2, char3;
-    Character character1, character2, character3;
+    Game game;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,21 +32,11 @@ public class MainActivity extends AppCompatActivity {
         char2 = findViewById(R.id.tvChar2);
         char3 = findViewById(R.id.tvChar3);
         etInput = findViewById(R.id.etInput);
-        character1 = new Character();
-    }
-
-    public void makeCharacter(){
-
-    }
-
-    public void gameStart(){
-
-
+        game = new Game();
     }
 
     public void SubmitText(View view){
         input = etInput.getText().toString().toLowerCase();
-        currentEvent();
     }
     
 }

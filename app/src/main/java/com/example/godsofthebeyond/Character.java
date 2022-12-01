@@ -13,12 +13,19 @@ public class Character {
     private int specLevel;
     private int physAtk;
     private int magAtk;
-    private int physdef;
+    private int physDef;
     private int magDef;
     private int spd;
     private int acc;
     private int evade;
     private boolean dead;
+
+    Character(String name, String job){
+
+        this.name = name;
+        this.job.name = job;
+
+    }
 
     public int getCurrReso() {
         return currReso;
@@ -41,7 +48,7 @@ public class Character {
     }
 
     public int getPhysdef() {
-        return physdef;
+        return physDef;
     }
 
     public int getSpd() {
@@ -72,7 +79,7 @@ public class Character {
 
     public void equipArmor(Armor armor){
         this.magDef += armor.getMagDef();
-        this.physdef += armor.getPhysDef();
+        this.physDef += armor.getPhysDef();
         this.evade = armor.getEvade();
     }
 
@@ -84,7 +91,7 @@ public class Character {
 
     public void unequipArmor(Armor armor){
         this.magDef -= armor.getMagDef();
-        this.physdef -= armor.getPhysDef();
+        this.physDef -= armor.getPhysDef();
         this.evade = armor.getEvade();
     }
 
