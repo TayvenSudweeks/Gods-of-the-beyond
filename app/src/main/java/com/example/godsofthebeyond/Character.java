@@ -64,6 +64,16 @@ public class Character {
         return evade;
     }
 
+    public String ToString(){
+        return "Max Resolution: " + this.maxReso + "\n" +
+                "Max Sanity: " + this.maxSan + "\n" +
+                "Phys Attack: " + this.physAtk + "\n" +
+                "Magic Attack: " + this.magAtk + "\n" +
+                "Phys Defense: " + this.physdef + "\n" +
+                "Magic Defense: " + this.magDef + "\n" +
+                "Speed: " + this.spd + "\n";
+    }
+
     public void equipWeapon(Weapon weapon){
         this.physAtk += weapon.getStrVal();
         this.magAtk += weapon.getMagVal();
@@ -89,10 +99,15 @@ public class Character {
     }
 
     public void setupCharacter(){
-
         this.maxReso = job.getBaseReso();
+        this.currReso = job.getBaseReso();
         this.maxSan = job.getBaseSan();
-
+        this.currSan = job.getBaseSan();
+        this.physAtk = job.getBasePhysAtk();
+        this.physdef = job.getBasePhysDef();
+        this.magAtk = job.getBaseMagAtk();
+        this.magDef = job.getBaseMagDef();
+        this.spd = job.getBaseSpd();
     }
 
     public void checkDead(){

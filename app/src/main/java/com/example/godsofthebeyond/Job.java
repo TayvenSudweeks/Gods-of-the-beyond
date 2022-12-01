@@ -96,46 +96,55 @@ public class Job {
 
     }
 
-    private int getBasePhysAtk(){
+    public int getBasePhysAtk(){
 
         return this.basePhysAtk;
 
     }
 
-    private int getBaseMagAtk(){
+    public int getBaseMagAtk(){
 
         return this.baseMagAtk;
 
     }
 
-    private int getBasePhysDef(){
+    public int getBasePhysDef(){
 
         return this.basePhysDef;
 
     }
 
-    private int getBaseMagDef(){
+    public int getBaseMagDef(){
 
         return this.baseMagDef;
 
     }
 
-    private int getBaseSpd(){
+    public int getBaseSpd(){
 
         return this.baseSpd;
 
     }
 
-    private String getSpecialty(){
+    public String getSpecialty(){
 
         return this.specialty;
 
     }
 
-    private int getSpecLevel(){
+    public int getSpecLevel(){
 
         return this.specLevel;
 
     }
+
+    public void setBaseMagAtk(int baseMagAtk) {
+        this.baseMagAtk = baseMagAtk;
+    }
+
+    public void setBaseMagDef(int baseMagDef) {
+        this.baseMagDef = baseMagDef;
+    }
+
 
 }
