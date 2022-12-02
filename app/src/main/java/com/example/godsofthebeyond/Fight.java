@@ -1104,6 +1104,27 @@ public class Fight {
         monsterTarget = char1.name;
     }
 
+    public void valorForm(Character char1){
+        char1.setPhysDef(char1.getPhysdef() - 3);
+        char1.setPhysAtk(char1.getPhysAtk() + 3);
+    }
+
+    public void strengthInator(Character char1, Character char2){
+        char1.setPhysAtk(char1.getPhysAtk() + 2);
+        char1.setPhysAtk(char2.getPhysAtk() + 2);
+    }
+
+    public void sevenemeralds(Character char1){
+        char1.setPhysDef(char1.getPhysdef() + 3);
+        char1.setMagDef(char1.getMagDef() + 3);
+    }
+
+    public void lockTarget(Character char1){
+        char1.setAcc(100);
+    }
+
+
+
     public void chooseTarget(Monster m1){
         int target = new Random().nextInt(4);
         switch (target) {

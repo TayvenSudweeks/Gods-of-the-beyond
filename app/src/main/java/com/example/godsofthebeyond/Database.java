@@ -7,7 +7,7 @@ public class Database {
     private int weaponCount;
     Weapon[] weapons = new Weapon[25];
     Armor[] armors = new Armor[15];
-    Monster[] monsters = new Monster[10];
+    Monster[] monsters = new Monster[11];
 
 
     public void createAllWeapons(){
@@ -71,6 +71,7 @@ public class Database {
         monsters[7] = new Monster("cult leader");
         monsters[8] = new Monster("zombie");
         monsters[9] = new Monster("mass of vines");
+        monsters[10] = new Monster("amogus");
     }
 
     public Weapon getRandomWeapon(){
@@ -84,7 +85,7 @@ public class Database {
     }
 
     public Monster getRandomMonster(){
-        int num = new Random().nextInt(10);
+        int num = new Random().nextInt(11);
         return monsters[num];
     }
 

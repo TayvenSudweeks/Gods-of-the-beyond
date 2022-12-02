@@ -1,6 +1,5 @@
 package com.example.godsofthebeyond;
 
-import androidx.annotation.NonNull;
 
 public class Character {
 
@@ -133,5 +132,22 @@ public class Character {
             dead = true;
         }
     }
+
+    public void setPhysAtk(int physAtk) {
+        this.physAtk = physAtk;
+    }
+
+    public void setPhysDef(int physDef) {
+        this.physDef = physDef;
+    }
+
+    public void setMagDef(int magDef) {
+        this.magDef = magDef;
+    }
+
+    public void setAcc(int acc) {
+        this.acc = acc;
+    }
+
 
 }

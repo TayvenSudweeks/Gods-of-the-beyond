@@ -90,25 +90,25 @@ public class Weapon {
             this.accVal = 65;
             this.jobReq = "hunter";
         } else if(weaponName == "throwing knife"){
-            this.strVal = 3;
-            this.magVal = 1;
-            this.accVal = 100;
-            this.jobReq = "mercenary";
-        } else if(weaponName == "dagger"){
             this.strVal = 4;
             this.magVal = 2;
             this.accVal = 90;
             this.jobReq = "mercenary";
+        } else if(weaponName == "dagger"){
+            this.strVal = 5;
+            this.magVal = 3;
+            this.accVal = 85;
+            this.jobReq = "mercenary";
         } else if(weaponName == "hidden blade"){
             this.strVal = 4;
             this.magVal = 4;
-            this.accVal = 90;
+            this.accVal = 85;
             this.jobReq = "mercenary";
             this.legendary = true;
         } else if(weaponName == "shank"){
-            this.strVal = 5;
-            this.magVal = 1;
-            this.accVal = 85;
+            this.strVal = 6;
+            this.magVal = 2;
+            this.accVal = 80;
             this.jobReq = "mercenary";
         } else if(weaponName == "balisong") {
             this.strVal = 4;

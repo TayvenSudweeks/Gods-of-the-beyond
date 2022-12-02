@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void OnInit(){
-        characterTexts = new TextView[3]
+        characterTexts = new TextView[3];
         output = findViewById(R.id.tvOutput);
         tvOptions = findViewById(R.id.tvOptions);
         characterTexts[0] = findViewById(R.id.tvChar1);

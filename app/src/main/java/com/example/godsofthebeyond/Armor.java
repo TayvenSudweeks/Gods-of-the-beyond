@@ -85,9 +85,9 @@ public class Armor {
             this.evade = 10;
             this.jobReq = "grappler";
         } else if(armorName == "red spikes"){
-            this.physDef = 6;
-            this.magDef = 6;
-            this.evade = 0;
+            this.physDef = 3;
+            this.magDef = 3;
+            this.evade = 20;
             this.jobReq = "grappler";
             this.legendary = true;
         }
