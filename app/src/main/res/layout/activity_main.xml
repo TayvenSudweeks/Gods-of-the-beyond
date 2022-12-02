@@ -15,6 +15,7 @@
         android:layout_marginEnd="5dp"
         android:text="test"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,12 +24,13 @@
         android:id="@+id/etInput"
         android:layout_width="250dp"
         android:layout_height="52dp"
-        android:layout_marginStart="82dp"
+        android:layout_marginStart="81dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="80dp"
+        android:layout_marginEnd="81dp"
         android:ems="10"
         android:hint="Input an option"
         android:inputType="textPersonName"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvOptions" />
@@ -37,46 +39,53 @@
         android:id="@+id/tvOptions"
         android:layout_width="253dp"
         android:layout_height="82dp"
-        android:layout_marginStart="78dp"
+        android:layout_marginStart="79dp"
         android:layout_marginTop="12dp"
-        android:layout_marginEnd="80dp"
+        android:layout_marginEnd="79dp"
         android:text="Options"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvOutput" />
 
     <TextView
         android:id="@+id/tvChar1"
-        android:layout_width="146dp"
-        android:layout_height="227dp"
+        android:layout_width="135dp"
+        android:layout_height="224dp"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="74dp"
+        android:layout_marginTop="68dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toStartOf="@+id/tvChar2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etInput" />
 
     <TextView
         android:id="@+id/tvChar2"
-        android:layout_width="141dp"
+        android:layout_width="135dp"
         android:layout_height="224dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginBottom="5dp"
         android:text="TextView"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/tvChar3"
-        app:layout_constraintStart_toEndOf="@+id/tvChar1" />
+        app:layout_constraintStart_toEndOf="@+id/tvChar1"
+        app:layout_constraintTop_toBottomOf="@+id/etInput" />
 
     <TextView
         android:id="@+id/tvChar3"
-        android:layout_width="123dp"
-        android:layout_height="222dp"
-        android:layout_marginEnd="6dp"
-        android:layout_marginBottom="7dp"
+        android:layout_width="135dp"
+        android:layout_height="224dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="5dp"
         android:text="TextView"
+        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvChar2" />
+        app:layout_constraintStart_toEndOf="@+id/tvChar2"
+        app:layout_constraintTop_toBottomOf="@+id/etInput" />
 
     <Button
         android:id="@+id/button"

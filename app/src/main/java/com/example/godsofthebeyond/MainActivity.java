@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void OnInit(){
-        characterTexts = new TextView[3]
+        characterTexts = new TextView[3];
         output = findViewById(R.id.tvOutput);
         tvOptions = findViewById(R.id.tvOptions);
         characterTexts[0] = findViewById(R.id.tvChar1);
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
         for(int charID = 0; charID < 3; charID++){
 
-            characterTexts[charID].setText(game.characters[charID].gatherData());
+            characterTexts[charID].setText(game.characters[charID].ToString());
 
         }
 

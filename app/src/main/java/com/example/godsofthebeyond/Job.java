@@ -72,12 +72,12 @@ public class Job {
 
             this.specialty = "evasion";
             this.specLevel = 5;
-            this.baseReso = 6;
+            this.baseReso = 8;
             this.baseSan = 7;
             this.basePhysAtk = 8;
             this.baseMagAtk = 2;
-            this.basePhysDef = 5;
-            this.baseMagDef = 4;
+            this.basePhysDef = 3;
+            this.baseMagDef = 2;
             this.baseSpd = 8;
 
         }
