@@ -25,13 +25,6 @@ public class Character {
         setupCharacter();
     }
 
-    public String gatherData(){
-
-        String data = name + "\n" + currReso + "/" + maxReso + " Resolve" + "\n" +
-                currSan + "/" + maxSan + " Sanity" +
-
-    }
-
     public int getCurrReso() {
         return currReso;
     }
@@ -81,8 +74,8 @@ public class Character {
     }
 
     public String ToString(){
-        return "Max Resolution: " + this.maxReso + "\n" +
-                "Max Sanity: " + this.maxSan + "\n" +
+        return "Resolution: " + this.currReso + "/" + this.maxReso + "\n" +
+                "Sanity: " + this.currSan + "/" + this.maxSan + "\n" +
                 "Phys Attack: " + this.physAtk + "\n" +
                 "Magic Attack: " + this.magAtk + "\n" +
                 "Phys Defense: " + this.physDef + "\n" +

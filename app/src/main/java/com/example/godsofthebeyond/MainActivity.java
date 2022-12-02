@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
         for(int charID = 0; charID < 3; charID++){
 
-            characterTexts[charID].setText(game.characters[charID].gatherData());
+            characterTexts[charID].setText(game.characters[charID].ToString());
 
         }
 
