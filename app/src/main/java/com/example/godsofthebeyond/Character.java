@@ -21,10 +21,16 @@ public class Character {
     private boolean dead;
 
     Character(String name, String job){
-
         this.name = name;
-        this.job.name = job;
-        this.dead = false;
+        this.job = new Job(job);
+        setupCharacter();
+    }
+
+    public String gatherData(){
+
+        String data = name + "\n" + currReso + "/" + maxReso + " Resolve" + "\n" +
+                currSan + "/" + maxSan + " Sanity" +
+
     }
 
     public int getCurrReso() {
@@ -115,6 +121,7 @@ public class Character {
         this.magAtk = job.getBaseMagAtk();
         this.magDef = job.getBaseMagDef();
         this.spd = job.getBaseSpd();
+        this.dead = false;
     }
 
     public void checkDead(){

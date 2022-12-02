@@ -8,12 +8,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 public class MainActivity extends AppCompatActivity {
 
-    public String options;
-    public String input;
     EditText etInput;
-    TextView output, tvOptions, char1, char2, char3;
+    TextView output, tvOptions;
+    TextView[] characterTexts;
     Game game;
 
     @Override
@@ -27,20 +28,39 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void OnInit(){
+        characterTexts = new TextView[3]
         output = findViewById(R.id.tvOutput);
         tvOptions = findViewById(R.id.tvOptions);
-        char1 = findViewById(R.id.tvChar1);
-        char2 = findViewById(R.id.tvChar2);
-        char3 = findViewById(R.id.tvChar3);
+        characterTexts[0] = findViewById(R.id.tvChar1);
+        characterTexts[1] = findViewById(R.id.tvChar2);
+        characterTexts[2] = findViewById(R.id.tvChar3);
         etInput = findViewById(R.id.etInput);
         game = new Game();
     }
 
     public void SubmitText(View view){
-        input = etInput.getText().toString().toLowerCase();
+        game.gameEvents(etInput.getText().toString().toLowerCase());
+        etInput.setText("");
+        output.setText(game.gameText());
+        tvOptions.setText((game.choicesText()));
+        updateCharacters();
+        if(game.error){
 
+            Toast toast = Toast.makeText(getApplicationContext(),"Please enter a valid input.", Toast.LENGTH_SHORT);
+            toast.show();
+            game.error = false;
+
+        }
     }
 
+    public void updateCharacters(){
 
+        for(int charID = 0; charID < 3; charID++){
+
+            characterTexts[charID].setText(game.characters[charID].gatherData());
+
+        }
+
+    }
 
 }
