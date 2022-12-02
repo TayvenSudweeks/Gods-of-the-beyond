@@ -37,8 +37,8 @@ public class Job {
             this.baseSan = 7;
             this.basePhysAtk = 9;
             this.baseMagAtk = 6;
-            this.basePhysDef = 3;
-            this.baseMagDef = 1;
+            this.basePhysDef = 4;
+            this.baseMagDef = 2;
             this.baseSpd = 4;
 
         }
@@ -50,8 +50,8 @@ public class Job {
             this.baseSan = 12;
             this.basePhysAtk = 1;
             this.baseMagAtk = 4;
-            this.basePhysDef = 1;
-            this.baseMagDef = 4;
+            this.basePhysDef = 2;
+            this.baseMagDef = 5;
             this.baseSpd = 3;
 
         }
@@ -63,8 +63,8 @@ public class Job {
             this.baseSan = 11;
             this.basePhysAtk = 3;
             this.baseMagAtk = 5;
-            this.basePhysDef = 2;
-            this.baseMagDef = 3;
+            this.basePhysDef = 3;
+            this.baseMagDef = 4;
             this.baseSpd = 5;
 
         }
@@ -76,7 +76,7 @@ public class Job {
             this.baseSan = 7;
             this.basePhysAtk = 8;
             this.baseMagAtk = 2;
-            this.basePhysDef = 4;
+            this.basePhysDef = 5;
             this.baseMagDef = 4;
             this.baseSpd = 8;
 
