@@ -1092,12 +1092,10 @@ public class Fight {
         m1.setPhysAtk(m1.getPhysAtk() - 2);
     }
 
-    public String suplex(Character char1, Monster m1){
+    public void suplex(Character char1, Monster m1){
         if(char1.getPhysAtk() > m1.getPhysAtk()){
             m1.setCurrReso(m1.getCurrReso() - 14);
-            return "SMAAAAASHH!!";
-        } else
-            return "He's... too strong...";
+        }
     }
 
     public void taunt(Character char1){
@@ -1114,7 +1112,7 @@ public class Fight {
         char1.setPhysAtk(char2.getPhysAtk() + 2);
     }
 
-    public void sevenemeralds(Character char1){
+    public void sevenEmeralds(Character char1){
         char1.setPhysDef(char1.getPhysdef() + 3);
         char1.setMagDef(char1.getMagDef() + 3);
     }
@@ -1123,7 +1121,16 @@ public class Fight {
         char1.setAcc(100);
     }
 
+    public void threaten(Monster target){
+        target.setSpd(target.getSpd() - 2);
+    }
 
+    public void herbalBrew(Character user, Character target){
+        target.setCurrReso(target.currReso + (user.getMagAtk() - 2));
+        if(target.currReso > target.getMaxReso()){
+            target.setCurrReso(target.getMaxReso());
+        }
+    }
 
     public void chooseTarget(Monster m1){
         int target = new Random().nextInt(4);

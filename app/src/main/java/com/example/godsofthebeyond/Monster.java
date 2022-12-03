@@ -146,4 +146,8 @@ public class Monster {
     public void setPhysAtk(int physAtk) {
         PhysAtk = physAtk;
     }
+
+    public void setSpd(int spd) {
+        this.spd = spd;
+    }
 }

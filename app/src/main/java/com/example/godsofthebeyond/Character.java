@@ -122,7 +122,7 @@ public class Character {
 
     public void checkDead(){
         if(this.currReso <= 0){
-            dead = true;
+            this.dead = true;
         }
     }
 
