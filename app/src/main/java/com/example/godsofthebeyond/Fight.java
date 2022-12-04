@@ -8,6 +8,7 @@ public class Fight {
     private String first, second, third, fourth;
     private String monsterTarget;
 
+
     public void playerAttack(Character attacker, Monster target){
         hitChance = new Random().nextInt(attacker.getAcc());
         if(hitChance < 10){
@@ -16,9 +17,7 @@ public class Fight {
             target.setCurrReso(target.getCurrReso() - attacker.getPhysAtk());
 
         }
-        if(target.getCurrReso() <= 0){
-            endFight();
-        }
+        checkMonDead(target);
     }
 
     public void monsterAttack(Monster attacker, Character target){
@@ -27,8 +26,19 @@ public class Fight {
             return;
         } else if(hitChance > 10){
             target.setCurrReso(target.getCurrReso() - (attacker.getPhysAtk() - target.getPhysdef()));
-            target.checkDead();
+            checkDead(target);
         }
+    }
+
+    public void monsterSpell(Monster attacker, Character target){
+        hitChance = new Random().nextInt(100);
+        if(hitChance < target.getEvade()){
+            return;
+        } else if(hitChance > 10){
+            target.setCurrReso(target.getCurrReso() - attacker.getMagAtk());
+
+        }
+        checkDead(target);
     }
 
     public void playerSpell(Character attacker, Monster target){
@@ -39,9 +49,7 @@ public class Fight {
             target.setCurrReso(target.getCurrReso() - attacker.getMagAtk());
 
         }
-        if(target.getCurrReso() <= 0){
-            endFight();
-        }
+        checkMonDead(target);
     }
 
     public void endFight(){
@@ -1145,5 +1153,23 @@ public class Fight {
         }
     }
 
+    public void acidSpray(Character ch1, Character ch2, Character ch3){
+        ch1.setCurrReso(ch1.getCurrReso() - 3);
+        ch2.setCurrReso(ch2.getCurrReso() - 3);
+        ch3.setCurrReso(ch3.getCurrReso() - 3);
+    }
 
+    public void checkDead(Character ch1){
+        if(ch1.currReso <= 0){
+            ch1.dead = true;
+        }
+    }
+
+    public void checkMonDead(Monster m1){
+        if(m1.getCurrReso() <= 0){
+            m1.dead = true;
+        }
+    }
+
+    public void
 }

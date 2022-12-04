@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         int charID = 0;
         while(charID < 4 && game.getCharacterIndex() != 0){
 
-            if(charID >= game.getCharacterIndex()){
+            if(charID  >= game.getCharacterIndex()){
                 return;
             } else {
                 characterTexts[charID].setText(game.characters[charID].toString());

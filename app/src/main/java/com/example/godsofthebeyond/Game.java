@@ -106,12 +106,12 @@ public class Game {
             }
             else{
 
-                /*try {
+                try {
                     JobNames.valueOf(input);
                 } catch {
                     error = true;
                     return;
-                }*/
+                }
 
                 //Converts into Enum values
                 if(JobNames.valueOf(input).toString() == "knight" ||JobNames.valueOf(input).toString() == "hunter" || JobNames.valueOf(input).toString() == "mercenary" || JobNames.valueOf(input).toString() == "alchemist" || JobNames.valueOf(input).toString() == "grappler"){
@@ -125,8 +125,9 @@ public class Game {
                     }
                     else{
 
-                        characterIndex = 0;
+                        //characterIndex = 0;
                         gameProgress++;
+                        characterIndex++;
 
                     }
 

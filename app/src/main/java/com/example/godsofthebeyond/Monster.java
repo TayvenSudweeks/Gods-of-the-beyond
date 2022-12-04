@@ -8,6 +8,7 @@ public class Monster {
     private String roomtype;
     private boolean boss;
     private String monsterName;
+    public boolean dead;
 
     Monster(){
 
