@@ -1171,5 +1171,11 @@ public class Fight {
         }
     }
 
-    public void
+    public void imprison(Character ch1){
+        ch1.setPhysAtk(ch1.getPhysAtk() - 2);
+    }
+
+    public void callUponGod(Monster m1){
+        m1.setMagAtk(m1.getMagAtk() + 2);
+    }
 }
