@@ -1153,11 +1153,7 @@ public class Fight {
         }
     }
 
-    public void acidSpray(Character ch1, Character ch2, Character ch3){
-        ch1.setCurrReso(ch1.getCurrReso() - 3);
-        ch2.setCurrReso(ch2.getCurrReso() - 3);
-        ch3.setCurrReso(ch3.getCurrReso() - 3);
-    }
+
 
     public void checkDead(Character ch1){
         if(ch1.currReso <= 0){
@@ -1171,6 +1167,12 @@ public class Fight {
         }
     }
 
+    public void acidSpray(Character ch1, Character ch2, Character ch3){
+        ch1.setCurrReso(ch1.getCurrReso() - 3);
+        ch2.setCurrReso(ch2.getCurrReso() - 3);
+        ch3.setCurrReso(ch3.getCurrReso() - 3);
+    }
+
     public void imprison(Character ch1){
         ch1.setPhysAtk(ch1.getPhysAtk() - 2);
     }
@@ -1178,4 +1180,13 @@ public class Fight {
     public void callUponGod(Monster m1){
         m1.setMagAtk(m1.getMagAtk() + 2);
     }
+
+    public void mendSelf(Monster m1){
+        m1.setCurrReso(m1.getCurrReso() + 25);
+        if(m1.getCurrReso() > m1.getMaxReso()){
+            m1.setCurrReso(m1.getMaxReso());
+        }
+    }
+
+
 }

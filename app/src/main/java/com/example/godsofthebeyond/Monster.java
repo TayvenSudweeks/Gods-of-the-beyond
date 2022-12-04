@@ -155,4 +155,8 @@ public class Monster {
     public void setMagAtk(int magAtk) {
         MagAtk = magAtk;
     }
+
+    public int getMaxReso() {
+        return maxReso;
+    }
 }
