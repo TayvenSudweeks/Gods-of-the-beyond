@@ -8,8 +8,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 public class MainActivity extends AppCompatActivity {
 
     EditText etInput;
@@ -61,13 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
             if(game.getStates() == 2){
 
-                characterTexts[startCharID].setText(game.characters[startCharID].toString());
-                startCharID++;
-
-            }
-            else{
-
-                return;
+                characterTexts[game.getCharacterIndex()].setText(game.characters[game.getCharacterIndex()].toString());
 
             }
 
