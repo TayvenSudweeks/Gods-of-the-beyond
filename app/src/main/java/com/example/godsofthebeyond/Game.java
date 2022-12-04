@@ -8,7 +8,7 @@ public class Game {
     private Database database = new Database();
     private String currentRoom;
     private String characterName;
-    boolean error;
+    boolean error = false;
     private int states = 1;
     private int characterIndex = 0;
     private int gameProgress = 0;
@@ -101,15 +101,22 @@ public class Game {
 
             if(states == 1){
 
-                characterName = input;
+                this.characterName = input;
                 states++;
-
             }
             else{
 
-                if(input.toLowerCase() == "knight" || input.toLowerCase() == "hunter" || input.toLowerCase() == "alchemist" || input.toLowerCase() == "mercenary" || input.toLowerCase() == "grappler"){
+                /*try {
+                    JobNames.valueOf(input);
+                } catch {
+                    error = true;
+                    return;
+                }*/
 
-                    characters[characterIndex] = new Character(characterName, input);
+                //Converts into Enum values
+                if(JobNames.valueOf(input).toString() == "knight" ||JobNames.valueOf(input).toString() == "hunter" || JobNames.valueOf(input).toString() == "mercenary" || JobNames.valueOf(input).toString() == "alchemist" || JobNames.valueOf(input).toString() == "grappler"){
+                    characters[characterIndex] = new Character(this.characterName, JobNames.valueOf(input).toString());
+                    System.out.println(characters[characterIndex].toString());
                     states = 1;
                     if(characterIndex <= 1){
 
@@ -136,4 +143,7 @@ public class Game {
 
     }
 
+    public int getCharacterIndex() {
+        return characterIndex;
+    }
 }

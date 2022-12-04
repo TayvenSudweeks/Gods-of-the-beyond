@@ -5,7 +5,7 @@ public class Character {
 
     String name;
     Job job;
-    private int maxReso;
+    private int maxReso ;
     int currReso;
     private int maxSan;
     int currSan;
@@ -73,7 +73,7 @@ public class Character {
         return evade;
     }
 
-    public String ToString(){
+    public String toString(){
         return "Resolution: " + this.currReso + "/" + this.maxReso + "\n" +
                 "Sanity: " + this.currSan + "/" + this.maxSan + "\n" +
                 "Phys Attack: " + this.physAtk + "\n" +
