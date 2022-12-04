@@ -120,7 +120,7 @@ public class Game {
 
                 /*try {
                     JobNames.valueOf(input);
-                } catch {
+                } catch() {
                     error = true;
                     return;
                 }*/
