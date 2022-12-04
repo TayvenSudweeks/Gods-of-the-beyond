@@ -48,17 +48,18 @@
 
     <TextView
         android:id="@+id/tvChar1"
-        android:layout_width="132dp"
-        android:layout_height="228dp"
+        android:layout_width="135dp"
+        android:layout_height="224dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="74dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etInput" />
+        app:layout_constraintTop_toBottomOf="@+id/etInput"
+        app:layout_constraintVertical_bias="0.428" />
 
     <TextView
         android:id="@+id/tvChar2"
-        android:layout_width="141dp"
+        android:layout_width="135dp"
         android:layout_height="224dp"
         android:layout_marginStart="1dp"
         android:layout_marginBottom="4dp"
@@ -68,10 +69,10 @@
 
     <TextView
         android:id="@+id/tvChar3"
-        android:layout_width="123dp"
-        android:layout_height="222dp"
+        android:layout_width="135dp"
+        android:layout_height="224dp"
         android:layout_marginEnd="6dp"
-        android:layout_marginBottom="7dp"
+        android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tvChar2" />
