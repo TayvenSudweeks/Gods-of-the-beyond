@@ -55,23 +55,15 @@ public class MainActivity extends AppCompatActivity {
 
     public void updateCharacters(){
 
-        if(game.getGameProgress() == 0){
+        int charID = 0;
+        while(charID < 4 && game.getCharacterIndex() != 0){
 
-            if(game.getStates() == 2){
-
-                characterTexts[game.getCharacterIndex()].setText(game.characters[game.getCharacterIndex()].toString());
-
-            }
-
-        }
-        else{
-
-            for(int charID = 0; charID < 3; charID++){
-
+            if(charID  >= game.getCharacterIndex()){
+                return;
+            } else {
                 characterTexts[charID].setText(game.characters[charID].toString());
-
+                charID++;
             }
-
         }
 
     }

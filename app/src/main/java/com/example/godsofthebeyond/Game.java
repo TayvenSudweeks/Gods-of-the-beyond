@@ -12,7 +12,7 @@ public class Game {
     private int states = 1;
     private int characterIndex = 0;
     private int gameProgress = 0;
-    private int chosenChar;
+    private int chosenChar = 0;
 
     public int getStates() {
 
