@@ -11,10 +11,11 @@ public class Character {
     int currSan;
     private int specLevel;
     private int physAtk;
-    private int magAtk;
-    private int physDef;
-    private int magDef;
-    private int spd;
+    private int setPhysAtk;
+    private int magAtk, setMagAtk;
+    private int physDef, setPhysDef;
+    private int magDef, setMagDef;
+    private int spd, setSpd;
     private int acc;
     private int evade;
     public boolean dead;
@@ -86,25 +87,33 @@ public class Character {
 
     public void equipWeapon(Weapon weapon){
         this.physAtk += weapon.getStrVal();
+        this.setPhysAtk += weapon.getStrVal();
         this.magAtk += weapon.getMagVal();
+        this.setMagAtk += weapon.getMagVal();
         this.acc = weapon.getAccVal();
     }
 
     public void equipArmor(Armor armor){
         this.magDef += armor.getMagDef();
+        this.setMagDef += armor.getMagDef();
         this.physDef += armor.getPhysDef();
+        this.setPhysDef += armor.getPhysDef();
         this.evade = armor.getEvade();
     }
 
     public void unequipWeapon(Weapon weapon){
         this.physAtk -= weapon.getStrVal();
+        this.setPhysAtk -= weapon.getStrVal();
         this.magAtk -= weapon.getMagVal();
+        this.setMagAtk -= weapon.getMagVal();
         this.acc = weapon.getAccVal();
     }
 
     public void unequipArmor(Armor armor){
         this.magDef -= armor.getMagDef();
+        this.setMagDef -= armor.getMagDef();
         this.physDef -= armor.getPhysDef();
+        this.setPhysDef -= armor.getPhysDef();
         this.evade = armor.getEvade();
     }
 
@@ -114,10 +123,15 @@ public class Character {
         this.maxSan = job.getBaseSan();
         this.currSan = job.getBaseSan();
         this.physAtk = job.getBasePhysAtk();
+        this.setPhysAtk = job.getBasePhysAtk();
         this.physDef = job.getBasePhysDef();
+        this.setPhysDef = job.getBasePhysDef();
         this.magAtk = job.getBaseMagAtk();
+        this.setMagAtk = job.getBaseMagAtk();
         this.magDef = job.getBaseMagDef();
+        this.setMagDef = job.getBaseMagDef();
         this.spd = job.getBaseSpd();
+        this.setSpd = job.getBaseSpd();
         this.dead = false;
     }
 
@@ -137,6 +151,14 @@ public class Character {
 
     public void setAcc(int acc) {
         this.acc = acc;
+    }
+
+    public void resetStats(){
+        this.physAtk = this.setPhysAtk;
+        this.physDef = this.setPhysDef;
+        this.magAtk = this.setMagAtk;
+        this.magDef = this.setMagDef;
+        this.spd = this.setSpd;
     }
 
 

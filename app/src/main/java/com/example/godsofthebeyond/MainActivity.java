@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         OnInit();
         output.setText(game.gameText());
+        tvOptions.setText(game.choicesText());
 
     }
 
