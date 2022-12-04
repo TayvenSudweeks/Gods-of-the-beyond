@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     TextView output, tvOptions;
     TextView[] characterTexts;
     Game game;
-    int startCharID = 0;
+    int startCharID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         characterTexts[2] = findViewById(R.id.tvChar3);
         etInput = findViewById(R.id.etInput);
         game = new Game();
+        startCharID = 0;
     }
 
     public void SubmitText(View view){
@@ -62,6 +63,11 @@ public class MainActivity extends AppCompatActivity {
 
                 characterTexts[startCharID].setText(game.characters[startCharID].toString());
                 startCharID++;
+
+            }
+            else{
+
+                return;
 
             }
 
