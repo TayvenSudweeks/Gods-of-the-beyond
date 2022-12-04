@@ -17,7 +17,7 @@ public class Character {
     private int spd;
     private int acc;
     private int evade;
-    private boolean dead;
+    public boolean dead;
 
     Character(String name, String job){
         this.name = name;
@@ -74,7 +74,8 @@ public class Character {
     }
 
     public String toString(){
-        return "Resolution: " + this.currReso + "/" + this.maxReso + "\n" +
+        return  "Name: " + this.name + "\n" +
+                "Resolution: " + this.currReso + "/" + this.maxReso + "\n" +
                 "Sanity: " + this.currSan + "/" + this.maxSan + "\n" +
                 "Phys Attack: " + this.physAtk + "\n" +
                 "Magic Attack: " + this.magAtk + "\n" +
@@ -120,11 +121,7 @@ public class Character {
         this.dead = false;
     }
 
-    public void checkDead(){
-        if(this.currReso <= 0){
-            this.dead = true;
-        }
-    }
+
 
     public void setPhysAtk(int physAtk) {
         this.physAtk = physAtk;
