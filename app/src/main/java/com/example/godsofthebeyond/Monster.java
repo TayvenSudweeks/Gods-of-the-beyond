@@ -151,4 +151,8 @@ public class Monster {
     public void setSpd(int spd) {
         this.spd = spd;
     }
+
+    public void setMagAtk(int magAtk) {
+        MagAtk = magAtk;
+    }
 }
