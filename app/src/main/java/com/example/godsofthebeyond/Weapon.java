@@ -9,6 +9,7 @@ public class Weapon {
     Weapon(){
 
     }
+
     Weapon(String weaponName){
         this.weaponName = weaponName;
         if(weaponName == "claymore" ){
