@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     TextView output, tvOptions;
     TextView[] characterTexts;
     Game game;
+    int startCharID = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +41,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void SubmitText(View view){
         game.gameEvents(etInput.getText().toString().toLowerCase());
-        etInput.setText("");
         output.setText(game.gameText());
         tvOptions.setText((game.choicesText()));
+        etInput.setText("");
         updateCharacters();
         if(game.error){
 
@@ -54,15 +55,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void updateCharacters(){
-        int charID = 0;
-        while(charID < 4 && game.getCharacterIndex() != 0){
 
-            if(charID >= game.getCharacterIndex()){
-                return;
-            } else {
-                characterTexts[charID].setText(game.characters[charID].toString());
-                charID++;
+        if(game.getGameProgress() == 0){
+
+            if(game.getStates() == 2){
+
+                characterTexts[startCharID].setText(game.characters[startCharID].toString());
+                startCharID++;
+
             }
+
+        }
+        else{
+
+            for(int charID = 0; charID < 3; charID++){
+
+                characterTexts[charID].setText(game.characters[charID].toString());
+
+            }
+
         }
 
     }

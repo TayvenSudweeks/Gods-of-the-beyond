@@ -13,6 +13,18 @@ public class Game {
     private int characterIndex = 0;
     private int gameProgress = 0;
 
+    public int getStates() {
+
+        return states;
+
+    }
+
+    public int getGameProgress() {
+
+        return gameProgress;
+
+    }
+
     public String getCurrentRoom() {
 
         return currentRoom;
@@ -85,7 +97,7 @@ public class Game {
             }
             else{
 
-                return "1: Knight  2: Mercenary  3: Alchemist  4: Hunter  5: Grappler";
+                return "1: Knight  2: Mercenary  3: Alchemist" + "\n" + "4: Hunter  5: Grappler";
 
             }
 
