@@ -157,6 +157,8 @@ public class Game {
     }
 
     public int getCharacterIndex() {
+
         return characterIndex;
+
     }
 }
