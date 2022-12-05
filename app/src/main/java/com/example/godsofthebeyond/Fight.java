@@ -52,8 +52,10 @@ public class Fight {
         checkMonDead(target);
     }
 
-    public void endFight(){
-
+    public void endFight(Character ch1, Character ch2, Character ch3){
+        ch1.resetStats();
+        ch2.resetStats();
+        ch3.resetStats();
     }
 
     public void setTurnOrder(Character ch1, Character ch2, Character ch3, Monster m1){

@@ -8,7 +8,7 @@ public class Database {
     Weapon[] weapons = new Weapon[25];
     Armor[] armors = new Armor[15];
     Monster[] monsters = new Monster[11];
-
+    Monster finalBoss = new Monster("astoth");
 
     public void createAllWeapons(){
 

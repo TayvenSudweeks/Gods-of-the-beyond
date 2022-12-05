@@ -46,6 +46,9 @@ public class Game {
 
                 if(states == 1){
 
+                    database.createAllWeapons();
+                    database.createAllArmors();
+                    database.createAllMonsters();
                     return "Your group is made up of ragtag individuals on their last hope, working for the king of Tharath. " +
                             "Your mission now is to hunt down the cultists that have recently taken up residence in one of the abandoned churches of Astoth. " +
                             "This is a bit worrisome, as Astoth was an eldritch horror from ages past, but the king is sure you lot can handle it before it gets worse. " +

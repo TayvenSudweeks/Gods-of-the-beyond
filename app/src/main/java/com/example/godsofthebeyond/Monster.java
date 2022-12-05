@@ -108,6 +108,15 @@ public class Monster {
             this.spd = 6;
             this.roomtype = "all";
             this.boss = true;
+        } else if(monsterName == "astoth"){
+            this.monsterName = monsterName;
+            this.maxReso = 150;
+            this.currReso = 150;
+            this.PhysAtk = 10;
+            this.MagAtk = 8;
+            this.spd = 5;
+            this.roomtype = "final";
+            this.boss = true;
         }
 
     }
