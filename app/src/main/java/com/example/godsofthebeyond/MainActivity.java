@@ -39,11 +39,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void SubmitText(View view){
-        game.gameEvents(etInput.getText().toString().toLowerCase());
-        output.setText(game.gameText());
-        tvOptions.setText((game.choicesText()));
+        game.gameEvents(etInput.getText().toString());
         etInput.setText("");
         updateCharacters();
+        output.setText(game.gameText());
+        tvOptions.setText((game.choicesText()));
         if(game.error){
 
             Toast toast = Toast.makeText(getApplicationContext(),"Please enter a valid input.", Toast.LENGTH_SHORT);

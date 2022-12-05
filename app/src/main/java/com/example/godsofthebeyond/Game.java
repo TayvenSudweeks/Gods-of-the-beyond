@@ -13,6 +13,12 @@ public class Game {
     private int characterIndex = 0;
     private int gameProgress = 0;
     private int chosenChar = 0;
+    private int chosenOption = 0;
+    private int totalKeys = 0;
+    private boolean gardenDoorOpen = true;
+    private boolean catacombsDoorOpen = true;
+    private boolean prisonDoorOpen = true;
+    private boolean belfryDoorOpen = true;
 
     public int getStates() {
 
@@ -83,6 +89,14 @@ public class Game {
             }
 
         }
+        else if(gameProgress == 1){
+
+            return "Your party makes it to the front of the church. " + characters[1].name + " feels a chill run down their spine as they enter the building. " +
+                    "It is dark and clammy, with one torch faintly glowing near a set of doors at the back of the foyer. The middle door is noticeably larger than the others, " +
+                    "and it's clear that it's more important. " + characters[2].name + " walks up to the door and tests the handle, bracing in case of a trap. " +
+                    "No traps are activated, yet the door stays shut. As they look around, they notice four keyholes, each with a symbol that corresponds to one on each of the other doors. " +
+                    "Which do you enter first?";
+        }
         return null;
 
     }
@@ -103,6 +117,36 @@ public class Game {
             }
 
         }
+        else if(gameProgress == 1){
+
+            int totalDoors = 1;
+            String doorsOpen = "";
+            if(gardenDoorOpen){
+
+                doorsOpen += totalDoors + ": Apple  ";
+                totalDoors++;
+
+            }
+            if(catacombsDoorOpen){
+
+                doorsOpen += totalDoors + ": Coffin  ";
+                totalDoors++;
+
+            }
+            if(prisonDoorOpen){
+
+                doorsOpen += totalDoors + ": Shackles  ";
+                totalDoors++;
+
+            }
+            if(belfryDoorOpen){
+
+                doorsOpen += totalDoors + ": Bell";
+
+            }
+            return doorsOpen;
+
+        }
         return null;
 
     }
@@ -119,12 +163,12 @@ public class Game {
             }
             else{
 
-                /*try {
+                try {
                     JobNames.valueOf(input);
-                } catch() {
+                } catch(Exception e) {
                     error = true;
                     return;
-                }*/
+                }
 
                 //Converts into Enum values
                 if(JobNames.valueOf(input).toString() == "knight" ||JobNames.valueOf(input).toString() == "hunter" || JobNames.valueOf(input).toString() == "mercenary" || JobNames.valueOf(input).toString() == "alchemist" || JobNames.valueOf(input).toString() == "grappler"){
@@ -152,6 +196,17 @@ public class Game {
                 }
 
             }
+
+        }
+        else if(gameProgress == 1){
+
+            if(totalKeys == 4){
+
+                gameProgress = 4;
+
+            }
+
+            String[] rooms = new String[4];
 
         }
 
