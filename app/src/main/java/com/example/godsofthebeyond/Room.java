@@ -4,14 +4,14 @@ import java.util.Random;
 
 public class Room {
 
-    private String roomName;
-    private String roomType;
-    private String roomChoices;
-    private String roomText;
+    String roomName;
+    String roomType;
+    String roomChoices;
+    String roomText;
     private boolean fight;
     private boolean bossFight;
-    private String roomOutcome1;
-    private String roomOutcome2;
+    String roomOutcome1;
+    String roomOutcome2;
     private int roomProgress;
 
 
@@ -107,7 +107,7 @@ public class Room {
 
     public void randomConversionRoom(){
         //starts boss fight
-        this.roomType = "conversion chamber";
+        this.roomType = "belfry";
         if(roomProgress == 1){
             this.roomText = "";
             this.fight = true;
@@ -116,10 +116,27 @@ public class Room {
             int newRoom = new Random().nextInt(3);
             switch (newRoom){
                 case 0: {
-                    this.roomText = "";
-                    this.roomChoices = "";
+                    this.roomText = "A massive bell hangs overhead, the clapper lying just above your heads.";
+                    this.roomChoices = "1: Pull the string, ring the bell. 2: Cut the string";
+                    this.roomOutcome1 = "The bell rings loud, nearly bursting your ears. You can't have been the only one who heard that. A fight starts!";
+                    this.roomOutcome2 = "The string falls to the ground, making barely a sound. ";
+                    break;
+                }
+                case 1: {
+                    this.roomText = "The wind blows through nearby chimes, giving a peaceful yet haunting melody.";
+                    this.roomChoices = "1: ";
+                    this.roomOutcome1 = "";
+                    this.roomOutcome2 = "";
+                    break;
+                }
+                case 2: {
+                    this.roomText = "You come across a monster!";
+                    this.fight = true;
+                    this.bossFight = false;
+                    break;
                 }
             }
+            roomProgress++;
         }
     }
 
@@ -132,7 +149,12 @@ public class Room {
         } else {
             int newRoom = new Random().nextInt(3);
             switch (newRoom){
-                case 0:
+                case 0:{
+                    this.roomText = "";
+                    this.roomChoices = "";
+                    this.roomOutcome1 = "";
+                    this.roomOutcome2 = "";
+                }
             }
         }
     }
