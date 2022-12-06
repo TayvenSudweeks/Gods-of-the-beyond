@@ -8,6 +8,7 @@ public class Room {
     String roomType;
     String roomChoices;
     String roomText;
+    private final int ROOM_CLEAR = 1;
     private boolean fight;
     private boolean bossFight;
     String roomOutcome1;
@@ -16,7 +17,7 @@ public class Room {
 
 
     public void randomGardenRoom(){
-        if(roomProgress == 1){
+        if(roomProgress == ROOM_CLEAR){
             this.roomText = "A deep rumbling echoes throughout the garden, shaking your party's feet. Each member turns to battle the threat, but their enemy is the earth itself! " + "\n" +
                     "Long, thick vines sprout from every direction, swinging at each of you. You ready your weapons! ";
             this.roomType = "garden";
@@ -58,7 +59,7 @@ public class Room {
 
     public void randomPrisonRoom(){
         //starts boss fight
-        if(roomProgress == 1){
+        if(roomProgress == ROOM_CLEAR){
             this.roomText = "A rattling chain sounds through the prison, clanging metal against metal, and a slow, methodical stomp." + "\n" +
                             "A dark figure starts to take form through the haze, a massive humanoid with chains leaking out of his cracked skin. " +
                             "In his thick, calloused hands, he holds what appears to be a grotesque version of a jailer's key, pulsating with dark power. " +
@@ -105,11 +106,14 @@ public class Room {
         }
     }
 
-    public void randomConversionRoom(){
+    public void randomBelfryRoom(){
         //starts boss fight
         this.roomType = "belfry";
-        if(roomProgress == 1){
-            this.roomText = "";
+        if(roomProgress == ROOM_CLEAR){
+            this.roomText = "From the main tower, you hear a low and methodical chanting. Guttural and malicious, it pierces the fiber of your being. " +
+                    "You cautiously approach as the voice gets louder and louder. Walls begin to crumble and break around you as the vibrating becomes visceral," +
+                    " tearing the place apart. As you enter the tower, the chanting stops, and the figure standing alone in the middle of the room slowly turns to you," +
+                    " grinning from ear to ear. 'You will come to learn the extent of the mistake you have made today.' Behind him sits a single key. You ready for battle!";
             this.fight = true;
             this.bossFight = true;
         } else {
@@ -124,9 +128,9 @@ public class Room {
                 }
                 case 1: {
                     this.roomText = "The wind blows through nearby chimes, giving a peaceful yet haunting melody.";
-                    this.roomChoices = "1: ";
-                    this.roomOutcome1 = "";
-                    this.roomOutcome2 = "";
+                    this.roomChoices = "1: Break the chimes. 2: Stay and listen.";
+                    this.roomOutcome1 = "You can't have this much noise, so you decide to break the chimes. After a sharp clang, everything goes quiet. You feel saddened by the loss of the music.";
+                    this.roomOutcome2 = "The intricate melodies take you far from this place, drifting further and further away. Your party wakes with a start, surrounded by enemies. A fight starts!";
                     break;
                 }
                 case 2: {
@@ -142,7 +146,7 @@ public class Room {
 
     public void randomCatacombsRoom(){
         this.roomType = "catacombs";
-        if(roomProgress == 1) {
+        if(roomProgress == ROOM_CLEAR) {
             this.roomText = "";
             this.fight = true;
             this.bossFight = true;
@@ -150,12 +154,29 @@ public class Room {
             int newRoom = new Random().nextInt(3);
             switch (newRoom){
                 case 0:{
-                    this.roomText = "";
-                    this.roomChoices = "";
-                    this.roomOutcome1 = "";
-                    this.roomOutcome2 = "";
+                    this.roomText = "The torches on the wall flicker and dance, placing you in a hypnotic trance. You're beginning to fall asleep!";
+                    this.roomChoices = "1: Blow out the torches to stop the hypnotism. 2: Shake yourself awake.";
+                    this.roomOutcome1 = "The darkness that was barely kept at bay before now becomes suffocating, stifling every action you take. You feel as though it can't be long before you go mad.";
+                    this.roomOutcome2 = "You intentionally slam yourselves into the walls, trying your hardest not to fall asleep.";
+                    break;
+                }
+                case 1: {
+                    this.roomText = "A coffin with a cracked lid lies open in an otherwise empty room.";
+                    this.roomChoices = "1: Check the coffin. 2: Leave it alone.";
+                    this.roomOutcome1 = "You enter the room and peer in. The coffin is completely empty, with not even a trace of something left in it. Your hair stands on end, but you're okay.";
+                    this.roomOutcome2 = "You try to walk away, but your feet are glued in place. The torches begin to flicker wildly, and " +
+                            "the very earth shudders, knowing something has gone horribly wrong. It ends as quickly as it began, and you attempt " +
+                            "to regain your composure, but you can't help but shake at the mere thought of what that was.";
+                    break;
+                }
+                case 2: {
+                    this.roomText = "A monster appears!";
+                    this.fight = true;
+                    this.bossFight = false;
+                    break;
                 }
             }
         }
     }
+
 }

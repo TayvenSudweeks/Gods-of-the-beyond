@@ -1091,54 +1091,88 @@ public class Fight {
     }
 
     public void potionHeal(Character user, Character target){
-        target.setCurrReso(target.currReso += user.getMagAtk());
-        if(target.currReso > target.getMaxReso()){
-            target.setCurrReso(target.getMaxReso());
-        }
+        if(user.currSan > 0) {
 
-    }
-
-    public void setTrap(Monster m1){
-        m1.setPhysAtk(m1.getPhysAtk() - 2);
-    }
-
-    public void suplex(Character char1, Monster m1){
-        if(char1.getPhysAtk() > m1.getPhysAtk()){
-            m1.setCurrReso(m1.getCurrReso() - 14);
+            target.setCurrReso(target.currReso += user.getMagAtk());
+            if (target.currReso > target.getMaxReso()) {
+                target.setCurrReso(target.getMaxReso());
+            }
+            user.currSan = user.currSan - 2;
         }
     }
 
-    public void taunt(Character char1){
-        monsterTarget = char1.name;
+    public void setTrap(Character user, Monster m1){
+        if(user.currSan > 0) {
+
+            m1.setPhysAtk(m1.getPhysAtk() - 2);
+            user.currSan = user.currSan - 2;
+        }
+    }
+
+    public void suplex(Character user, Monster m1){
+        if(user.currSan > 0) {
+
+            if (user.getPhysAtk() > m1.getPhysAtk()) {
+                m1.setCurrReso(m1.getCurrReso() - 14);
+            }
+            user.currSan = user.currSan - 3;
+        }
+    }
+
+    public void taunt(Character user){
+        if(user.currSan > 0) {
+
+            monsterTarget = user.name;
+            user.currSan = user.currSan - 2;
+        }
     }
 
     public void valorForm(Character char1){
-        char1.setPhysDef(char1.getPhysdef() - 3);
-        char1.setPhysAtk(char1.getPhysAtk() + 3);
+        if(char1.currSan > 0) {
+            char1.setPhysDef(char1.getPhysdef() - 3);
+            char1.setPhysAtk(char1.getPhysAtk() + 3);
+            char1.currSan = char1.currSan - 3;
+        }
     }
 
-    public void strengthInator(Character char1, Character char2){
-        char1.setPhysAtk(char1.getPhysAtk() + 2);
-        char1.setPhysAtk(char2.getPhysAtk() + 2);
+    public void strengthInator(Character char1, Character char2, Character user){
+        if(user.currSan > 0) {
+            char1.setPhysAtk(char1.getPhysAtk() + 2);
+            char1.setPhysAtk(char2.getPhysAtk() + 2);
+            user.currSan = user.currSan - 4;
+        }
     }
 
     public void sevenEmeralds(Character char1){
-        char1.setPhysDef(char1.getPhysdef() + 3);
-        char1.setMagDef(char1.getMagDef() + 3);
+        if(char1.currSan > 0) {
+            char1.setPhysDef(char1.getPhysdef() + 3);
+            char1.setMagDef(char1.getMagDef() + 3);
+            char1.currSan = char1.currSan - 2;
+        }
     }
 
     public void lockTarget(Character char1){
-        char1.setAcc(100);
+        if(char1.currSan > 0) {
+
+            char1.setAcc(100);
+            char1.currSan = char1.currSan - 1;
+        }
     }
 
-    public void threaten(Monster target){
-        target.setSpd(target.getSpd() - 2);
+    public void threaten(Character user, Monster target){
+        if(user.currSan > 0) {
+            target.setSpd(target.getSpd() - 2);
+            user.currSan = user.currSan - 2;
+        }
     }
 
     public void herbalBrew(Character user, Character target){
-        target.setCurrReso(target.currReso + (user.getMagAtk() - 2));
-        if(target.currReso > target.getMaxReso()){
-            target.setCurrReso(target.getMaxReso());
+        if(user.currSan > 0) {
+            target.setCurrReso(target.currReso + (user.getMagAtk() - 2));
+            if (target.currReso > target.getMaxReso()) {
+                target.setCurrReso(target.getMaxReso());
+            }
+            user.currSan = user.currSan - 2;
         }
     }
 

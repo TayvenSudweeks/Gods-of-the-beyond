@@ -143,4 +143,7 @@ public class Database {
         return spawn;
     }
 
+    public Monster makeFinalBoss(){
+        return finalBoss;
+    }
 }
