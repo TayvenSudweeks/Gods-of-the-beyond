@@ -14,7 +14,7 @@ public class Game {
     private int characterIndex = 0;
     private int gameProgress = 0;
     private int chosenChar = 0;
-    private int chosenOption = 0;
+    private String chosenRoom;
     private int totalKeys = 0;
     private int totalDoors = 0;
     private boolean gardenDoorOpen = true;
@@ -102,6 +102,18 @@ public class Game {
                     "No traps are activated, yet the door stays shut. As they look around, they notice four keyholes, each with a symbol that corresponds to one on each of the other doors. " +
                     "Which do you enter first?";
         }
+        else if(gameProgress == 2){
+
+            String totalText;
+            totalText = currentRoom.getRoomText();
+            if(currentRoom.getFight()) {
+
+
+                return totalText + "\n" + "\n" + currentRoom.getMonsterStats() + "\n" + "\n" + "Who attacks?";
+
+            }
+
+        }
         return null;
 
     }
@@ -150,6 +162,20 @@ public class Game {
 
             }
             return doorsOpen;
+
+        }
+        else if(gameProgress == 2){
+
+            if(currentRoom.getFight()){
+
+                return "1: " + characters[0].name + "   2: " + characters[1].name + "   3: " + characters[2].name;
+
+            }
+            else{
+
+                return currentRoom.getRoomChoices();
+
+            }
 
         }
         return null;
@@ -228,28 +254,64 @@ public class Game {
 
             if(totalKeys == 4){
 
-                gameProgress = 4;
+                gameProgress = 3;
 
             }
             else{
 
                 int roomIndex = 0;
-                Room[] rooms = new Room[totalDoors];
+                String[] rooms = new String[totalDoors];
                 if(gardenDoorOpen){
 
-                    rooms[roomIndex] = new Room();
+                    rooms[roomIndex] = "garden";
                     roomIndex++;
 
                 }
                 if(catacombsDoorOpen){
 
+                    rooms[roomIndex] = "catacombs";
+                    roomIndex++;
+
                 }
                 if(prisonDoorOpen){
+
+                    rooms[roomIndex] = "prison";
+                    roomIndex++;
 
                 }
                 if(belfryDoorOpen){
 
+                    rooms[roomIndex] = "belfry";
+
                 }
+
+                chosenRoom = rooms[Integer.parseInt(input)];
+                System.out.println(chosenRoom);
+                currentRoom.runEvent();
+                gameProgress++;
+
+            }
+
+        }
+        else if(gameProgress == 2){
+
+            if(currentRoom.getFight()){
+
+                if(currentRoom.getFightStart()){
+
+                    currentRoom.setMonsters();
+
+                }
+
+
+
+                if(currentRoom.getChosenMonster().dead){
+
+                    currentRoom.setFight(false);
+                    currentRoom.setFightStart(true);
+
+                }
+
 
             }
 

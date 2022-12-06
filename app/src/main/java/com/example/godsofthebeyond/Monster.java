@@ -80,7 +80,7 @@ public class Monster {
             this.PhysAtk = 7;
             this.MagAtk = 7;
             this.spd = 3;
-            this.roomtype = "conversion chamber";
+            this.roomtype = "belfry";
             this.boss = true;
         } else if(monsterName == "zombie"){
             this.monsterName = monsterName;
@@ -89,7 +89,7 @@ public class Monster {
             this.PhysAtk = 4;
             this.MagAtk = 0;
             this.spd = 1;
-            this.roomtype = "conversion chamber";
+            this.roomtype = "belfry";
         } else if(monsterName == "mass of vines"){
             this.monsterName = monsterName;
             this.maxReso = 80;
