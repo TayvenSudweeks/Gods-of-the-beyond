@@ -4,10 +4,10 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Fight {
+
     private int hitChance;
     private String first, second, third, fourth;
     private String monsterTarget;
-
 
     public void playerAttack(Character attacker, Monster target){
         hitChance = new Random().nextInt(attacker.getAcc());
