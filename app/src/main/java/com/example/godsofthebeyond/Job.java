@@ -15,7 +15,7 @@ public class Job {
 
     Job(String name){
 
-        this.name = name.toLowerCase();
+        this.name = JobNames.valueOf(name.toLowerCase()).toString();
         if(this.name == "knight"){
 
             this.specialty = "tactics";

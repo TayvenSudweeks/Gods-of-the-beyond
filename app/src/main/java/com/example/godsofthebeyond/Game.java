@@ -6,15 +6,17 @@ public class Game {
 
     Character[] characters = new Character[3];
     private Database database = new Database();
-    private String currentRoom;
+    private Room currentRoom = new Room();
     private String characterName;
     boolean error = false;
+    int[] characterJobs = new int[3];
     private int states = 1;
     private int characterIndex = 0;
     private int gameProgress = 0;
     private int chosenChar = 0;
     private int chosenOption = 0;
     private int totalKeys = 0;
+    private int totalDoors = 0;
     private boolean gardenDoorOpen = true;
     private boolean catacombsDoorOpen = true;
     private boolean prisonDoorOpen = true;
@@ -32,7 +34,7 @@ public class Game {
 
     }
 
-    public String getCurrentRoom() {
+    public Room getCurrentRoom() {
 
         return currentRoom;
 
@@ -122,28 +124,28 @@ public class Game {
         }
         else if(gameProgress == 1){
 
-            int totalDoors = 1;
             String doorsOpen = "";
             if(gardenDoorOpen){
 
-                doorsOpen += totalDoors + ": Apple  ";
                 totalDoors++;
+                doorsOpen += totalDoors + ": Apple  ";
 
             }
             if(catacombsDoorOpen){
 
-                doorsOpen += totalDoors + ": Coffin  ";
                 totalDoors++;
+                doorsOpen += totalDoors + ": Coffin  ";
 
             }
             if(prisonDoorOpen){
 
-                doorsOpen += totalDoors + ": Shackles  ";
                 totalDoors++;
+                doorsOpen += totalDoors + ": Shackles  ";
 
             }
             if(belfryDoorOpen){
 
+                totalDoors++;
                 doorsOpen += totalDoors + ": Bell";
 
             }
@@ -163,36 +165,57 @@ public class Game {
 
                 this.characterName = input;
                 states++;
+
             }
             else{
 
-                try {
-                    JobNames.valueOf(input);
-                } catch(Exception e) {
-                    error = true;
-                    return;
-                }
+                try{
 
-                //Converts into Enum values
-                if(JobNames.valueOf(input).toString() == "knight" ||JobNames.valueOf(input).toString() == "hunter" || JobNames.valueOf(input).toString() == "mercenary" || JobNames.valueOf(input).toString() == "alchemist" || JobNames.valueOf(input).toString() == "grappler"){
-                    characters[characterIndex] = new Character(this.characterName, JobNames.valueOf(input).toString());
-                    System.out.println(characters[characterIndex].toString());
-                    states = 1;
-                    if(characterIndex <= 1){
+                    if ((characterIndex == 1 && characterJobs[0] == Integer.parseInt(input)) || (characterIndex == 2 && (Integer.parseInt(input) == characterJobs[1] || Integer.parseInt(input) == characterJobs[0]))) {
 
-                        characterIndex++;
+                        error = true;
+
+                    } else if (0 < Integer.parseInt(input) && Integer.parseInt(input) < 6) {
+
+
+                        switch (Integer.parseInt(input)){
+
+                            case 1:
+                                characters[characterIndex] = new Character(this.characterName, "knight");
+                                break;
+                            case 2:
+                                characters[characterIndex] = new Character(this.characterName, "mercenary");
+                                break;
+                            case 3:
+                                characters[characterIndex] = new Character(this.characterName, "alchemist");
+                                break;
+                            case 4:
+                                characters[characterIndex] = new Character(this.characterName, "hunter");
+                                break;
+                            case 5:
+                                characters[characterIndex] = new Character(this.characterName, "grappler");
+                                break;
+                        }
+                        characterJobs[characterIndex] = (Integer.parseInt(input));
+                        states = 1;
+                        if (characterIndex <= 1) {
+
+                            characterIndex++;
+
+                        }else {
+
+                            gameProgress++;
+                            characterIndex++;
+
+                        }
+
+                    } else{
+
+                        error = true;
 
                     }
-                    else{
 
-                        //characterIndex = 0;
-                        gameProgress++;
-                        characterIndex++;
-
-                    }
-
-                }
-                else{
+                }catch (NumberFormatException e ){
 
                     error = true;
 
@@ -208,8 +231,27 @@ public class Game {
                 gameProgress = 4;
 
             }
+            else{
 
-            String[] rooms = new String[4];
+                int roomIndex = 0;
+                Room[] rooms = new Room[totalDoors];
+                if(gardenDoorOpen){
+
+                    rooms[roomIndex] = new Room();
+                    roomIndex++;
+
+                }
+                if(catacombsDoorOpen){
+
+                }
+                if(prisonDoorOpen){
+
+                }
+                if(belfryDoorOpen){
+
+                }
+
+            }
 
         }
 
