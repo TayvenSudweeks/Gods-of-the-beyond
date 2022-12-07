@@ -255,7 +255,10 @@ public class Room {
         } else if (roomName == "catacombs") {
             this.roomType = "catacombs";
             if (roomProgress == ROOM_CLEAR) {
-                this.roomText = "";
+                this.roomText = "As you wander the unending tunnels, a revolting smell pierces the gloom. The source is a room off to the side, wide open with a single closed coffin." +
+                        " As you approach, a withered and rotted hand bursts forward, shattering the stone top. The skeletal hand grabs the side of the coffin, pulling up whatever is inside. " +
+                        "It's a hideous draugr, rotted and decayed. Its blue skin blends deeply into the room, and it lets out a bloodcurdling screech. On its neck you see a key dangling loosely from a rope, " +
+                        "and you ready your weapons.";
                 this.fight = true;
                 this.bossFight = true;
             } else {
@@ -265,8 +268,27 @@ public class Room {
                         this.roomText = "The torches flicker wildly on the walls, putting you in a hypnotic trance.";
                         this.roomChoices = "1: Put out the torches. 2: Shake yourself awake.";
                         this.badOption = 1;
-                        this.roomOutcome1 = "";
-                        this.roomOutcome2 = "";
+                        this.roomOutcome1 = "The darkness that was only barely held back by torches' measly light now becomes " +
+                                "all consuming, gripping you and dragging you down. You stumble along, trying to get your bearings, but all feels lost.";
+                        this.roomOutcome2 = "You intentionally throw yourselves into the walls, trying to break out of the stupor.";
+                        this.fight = false;
+                        break;
+                    }
+                    case 1: {
+                        this.roomText = "A fight starts!";
+                        this.fight = true;
+                        this.bossFight = false;
+                        break;
+                    }
+                    case 2: {
+                        this.roomText = "A coffin lies in an otherwise empty room, the lid slightly cracked.";
+                        this.roomChoices = "1: Check the coffin. 2: Ignore it and move on.";
+                        this.badOption = 1;
+                        this.roomOutcome1 = "You enter the room, and the temperature drops several degrees. Your breath fogs in front of you. You lean over the " +
+                                "edge of the casket, and peer inside." + "\n" +
+                                "It's completely empty, with not a trace of there being anything there in the first place. A chill runs down your back, but you're fine.";
+                        this.roomOutcome2 = "You try to walk away, but your feet are glued to the floor. The torches on the walls flame violently, and the ground beneath your feet begins to tremble." +
+                                " Terrified, you try to scream, but the air doesn't leave your lungs. Just as you give up your last bit of hope, the ethereal experience stops as soon as it started, leaving you trembling in its wake.";
                         this.fight = false;
                         break;
                     }
