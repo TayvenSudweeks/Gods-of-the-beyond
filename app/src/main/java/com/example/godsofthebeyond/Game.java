@@ -331,6 +331,7 @@ public class Game {
                 System.out.println(chosenRoom);
                 currentRoom.setRoomName(chosenRoom);
                 System.out.println(currentRoom.getRoomName());
+                currentRoom.setBosses();
                 currentRoom.setMonsters();
                 currentRoom.runEvent();
                 gameProgress++;

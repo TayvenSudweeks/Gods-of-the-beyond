@@ -57,7 +57,7 @@ public class Room {
         }
 
         Random random = new Random();
-        chosenMonster = monsters[random.nextInt(5)];
+        chosenMonster = monsters[random.nextInt(4)];
         fightStart = false;
 
     }
@@ -159,7 +159,7 @@ public class Room {
                 this.bossFight = true;
 
                 this.roomProgress++;
-            } else {
+            } else if (roomProgress < ROOM_CLEAR){
                 int newRoom = new Random().nextInt(3);
                 switch (newRoom) {
                     case 0: {
@@ -193,6 +193,12 @@ public class Room {
                     }
                 }
             }
+            else{
+
+                roomName = "";
+                roomProgress = 0;
+
+            }
         } else if (roomName == "prison") {
             //starts boss fight
             if (roomProgress == ROOM_CLEAR) {
@@ -203,7 +209,7 @@ public class Room {
                 this.roomType = "prison";
                 this.fight = true;
                 this.bossFight = true;
-            } else {
+            } else if(roomProgress < ROOM_CLEAR){
                 int newRoom = new Random().nextInt(3);
                 switch (newRoom) {
                     case 0: {
@@ -242,6 +248,12 @@ public class Room {
                     }
                 }
             }
+            else{
+
+                roomName = "";
+                roomProgress = 0;
+
+            }
         } else if (roomName == "belfry") {
             //starts boss fight
             this.roomType = "belfry";
@@ -252,7 +264,7 @@ public class Room {
                         "Behind him sits a small key, otherwise unguarded. You ready your weapons!";
                 this.fight = true;
                 this.bossFight = true;
-            } else {
+            } else if (roomProgress < ROOM_CLEAR){
                 int newRoom = new Random().nextInt(3);
                 switch (newRoom) {
                     case 0: {
@@ -283,13 +295,19 @@ public class Room {
                 }
                 roomProgress++;
             }
+            else{
+
+                roomName = "";
+                roomProgress = 0;
+
+            }
         } else if (roomName == "catacombs") {
             this.roomType = "catacombs";
             if (roomProgress == ROOM_CLEAR) {
                 this.roomText = "";
                 this.fight = true;
                 this.bossFight = true;
-            } else {
+            } else if(roomProgress < ROOM_CLEAR){
                 int newRoom = new Random().nextInt(3);
                 switch (newRoom) {
                     case 0: {
@@ -302,6 +320,12 @@ public class Room {
                         break;
                     }
                 }
+            }
+            else{
+
+                roomName = "";
+                roomProgress = 0;
+
             }
         }
     }
