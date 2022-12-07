@@ -168,4 +168,8 @@ public class Monster {
     public int getMaxReso() {
         return maxReso;
     }
+
+    public void setDead(boolean dead) {
+        this.dead = dead;
+    }
 }

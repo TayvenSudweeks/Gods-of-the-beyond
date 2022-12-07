@@ -14,9 +14,10 @@ public class Room {
     String roomOutcome2;
     private int roomProgress;
     Monster[] monsters = new Monster[4];
-    private Monster chosenMonster;
+    Monster chosenMonster;
     private boolean fightStart = true;
     private int badOption;
+    Fight battle = new Fight();
 
     public int getBadOption(){
 

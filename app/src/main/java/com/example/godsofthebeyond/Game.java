@@ -21,6 +21,8 @@ public class Game {
     private boolean catacombsDoorOpen = true;
     private boolean prisonDoorOpen = true;
     private boolean belfryDoorOpen = true;
+    private int chosenBattleOption;
+    private int turn;
 
     public int getStates() {
 
@@ -108,8 +110,11 @@ public class Game {
             totalText = currentRoom.getRoomText();
             if(currentRoom.getFight()) {
 
+                if(states == 1) {
 
-                return totalText + "\n" + "\n" + currentRoom.getMonsterStats() + "\n" + "\n" + "Who attacks?";
+                    return totalText + "\n" + "\n" + currentRoom.getMonsterStats() + "\n" + "\n" + "Who attacks?";
+
+                }
 
             }
 
@@ -302,7 +307,24 @@ public class Game {
                     currentRoom.setMonsters();
 
                 }
+                if(turn <= 4)
 
+                    switch(states){
+
+                        case 1:
+                            chosenBattleOption = Integer.parseInt(input);
+                        case 2:
+                            switch(chosenBattleOption){
+
+                                case 1:
+                                    currentRoom.battle.playerAttack(, currentRoom.chosenMonster);
+                                case 2:
+
+
+                            }
+
+                    }
+                }
 
 
                 if(currentRoom.getChosenMonster().dead){
@@ -316,6 +338,7 @@ public class Game {
             }
 
         }
+        error = true;
 
     }
 
