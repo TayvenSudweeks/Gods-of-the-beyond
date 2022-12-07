@@ -7,7 +7,7 @@ public class Fight {
 
     private int hitChance;
     private String first, second, third, fourth;
-    private String monsterTarget;
+    private Character monsterTarget;
 
     public void playerAttack(Character attacker, Monster target){
         hitChance = new Random().nextInt(attacker.getAcc());
@@ -58,7 +58,7 @@ public class Fight {
         ch3.resetStats();
     }
 
-    public void setTurnOrder(Character ch1, Character ch2, Character ch3, Monster m1){
+    /*public void setTurnOrder(Character ch1, Character ch2, Character ch3, Monster m1){
         int char1 = ch1.getSpd();
         int char2 = ch2.getSpd();
         int char3 = ch3.getSpd();
@@ -1088,7 +1088,7 @@ public class Fight {
 
 
 
-    }
+    }*/
 
     public void potionHeal(Character user, Character target){
         if(user.currSan > 0) {
@@ -1122,7 +1122,7 @@ public class Fight {
     public void taunt(Character user){
         if(user.currSan > 0) {
 
-            monsterTarget = user.name;
+            monsterTarget = user;
             user.currSan = user.currSan - 2;
         }
     }
@@ -1176,16 +1176,15 @@ public class Fight {
         }
     }
 
-    public void chooseTarget(Monster m1){
-        int target = new Random().nextInt(4);
+    public void chooseTarget(Monster m1, Character ch1, Character ch2, Character ch3){
+        int target = new Random().nextInt(3);
         switch (target) {
-            case 0: monsterTarget = fourth;
-            case 1: monsterTarget = third;
-            case 2: monsterTarget = second;
-            case 3: monsterTarget = first;
-        }
-        while(monsterTarget == m1.getMonsterName()){
-            chooseTarget(m1);
+            case 0: monsterTarget = ch1;
+            break;
+            case 1: monsterTarget = ch2;
+            break;
+            case 2: monsterTarget = ch3;
+            break;
         }
     }
 
@@ -1224,5 +1223,7 @@ public class Fight {
         }
     }
 
+    public void randomMonsterAttack(Monster user, Character ch1, Character ch2, Character ch3){
 
+    }
 }
