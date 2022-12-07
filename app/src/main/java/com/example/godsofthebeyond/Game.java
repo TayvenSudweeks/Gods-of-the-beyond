@@ -136,6 +136,9 @@ public class Game {
                 return rewardText;
 
             }
+            else if(states == 3){
+                totalText = currentRoom.getRoomText();
+            }
             else if(currentRoom.getFight()) {
 
                 return totalText + "\n" + "\n" + currentRoom.getMonsterStats() + "\n" + "\n" + "What does " + (characters[turn - 1].name) + " do?";
@@ -144,6 +147,14 @@ public class Game {
             else if(!currentRoom.getFight()) {
                 return totalText;
             }
+
+            /*if(gameProgress == 3){
+                return "The symbols on the final door glow softly as you turn each key in succession, and you hear a loud *clunk* as the lock that was keeping " +
+                        "you out gives way. You ready yourself for the final battle and enter the ornate middle door. " + "\n" +
+                        "Towering above you in a heap of flesh and grotesque pieces, stands Astoth. The behemoth had clearly been waiting for someone to approach." +
+                        "Every bone in your body screams at you to get out as fast as you can, but you hold strong, knowing you are likely the last thing that stands between " +
+                        "this world and oblivion. ";
+            }*/
 
         }
         return null;
@@ -213,11 +224,6 @@ public class Game {
                 return currentRoom.getRoomChoices();
 
             }
-
-        }
-        else if(gameProgress == 3){
-
-
 
         }
         return null;
@@ -341,13 +347,6 @@ public class Game {
         }
         else if(gameProgress == 2){
 
-            if(states == 2){
-
-                equipReward();
-                states = 1;
-                gameProgress = 1;
-
-            }
             if(currentRoom.getFight()){
 
                 if(currentRoom.getFightStart()){
@@ -528,9 +527,9 @@ public class Game {
                 }
 
             }
-            else if(!currentRoom.getFight()){
+            else{
 
-                if(Integer.parseInt(input) == currentRoom.getBadOption()) {
+                if(Integer.parseInt(input) == currentRoom.getBadOption()){
 
                     int characterHarmed = new Random().nextInt(3);
                     if (currentRoom.getRoomName() == "garden") {

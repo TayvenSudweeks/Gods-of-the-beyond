@@ -26,6 +26,10 @@ public class Room {
 
     }
 
+    public void setFinalBoss(){
+        chosenMonster = new Monster("astoth");
+    }
+
     public boolean isBossFight() {
         return bossFight;
     }
