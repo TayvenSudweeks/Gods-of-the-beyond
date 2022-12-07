@@ -1,6 +1,7 @@
 package com.example.godsofthebeyond;
 
 public class Armor {
+    private String name;
     private int physDef, magDef, evade;
     private String jobReq;
     private boolean legendary;
@@ -91,7 +92,11 @@ public class Armor {
             this.jobReq = "grappler";
             this.legendary = true;
         }
+        name = armorName;
+    }
 
+    public String getName() {
+        return name;
     }
 
     public String getJobReq() {

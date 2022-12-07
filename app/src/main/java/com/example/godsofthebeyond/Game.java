@@ -1,6 +1,7 @@
 package com.example.godsofthebeyond;
 
 import java.util.Locale;
+import java.util.Random;
 
 public class Game {
 
@@ -23,6 +24,8 @@ public class Game {
     private boolean belfryDoorOpen = true;
     private int chosenBattleOption;
     private int turn;
+    boolean gameOver;
+    String reward;
 
     public int getStates() {
 
@@ -309,110 +312,183 @@ public class Game {
                 }
                 if(turn <= 4){
 
-                    switch(states){
+                    chosenBattleOption = Integer.parseInt(input);
+                    switch(chosenBattleOption) {
 
                         case 1:
-                            chosenBattleOption = Integer.parseInt(input);
+                            currentRoom.battle.playerAttack(characters[turn - 1], currentRoom.chosenMonster);
+                            turn++;
                             break;
                         case 2:
-                            switch(chosenBattleOption){
+                            currentRoom.battle.playerSpell(characters[turn - 1], currentRoom.chosenMonster);
+                            turn++;
+                            break;
+                        case 3:
+                            if (characters[turn - 1].job.name == "knight") {
 
-                                case 1:
-                                    currentRoom.battle.playerAttack(characters[turn - 1], currentRoom.chosenMonster);
-                                    break;
-                                case 2:
-                                    currentRoom.battle.playerSpell(characters[turn -1], currentRoom.chosenMonster);
-                                    break;
-                                case 3:
-                                    if (characters[turn - 1].job.name == "knight") {
+                                currentRoom.battle.taunt(characters[turn - 1], currentRoom.chosenMonster);
 
-                                        currentRoom.battle.taunt(characters[turn - 1], currentRoom.chosenMonster);
+                            } else if (characters[turn - 1].job.name == "mercenary") {
 
-                                    }
-                                    else if (characters[turn - 1].job.name == "mercenary") {
+                                currentRoom.battle.lockTarget(characters[turn - 1]);
 
-                                        currentRoom.battle.lockTarget(characters[turn - 1]);
+                            } else if (characters[turn - 1].job.name == "alchemist") {
 
-                                    }
-                                    else if (characters[turn - 1].job.name == "alchemist") {
+                                currentRoom.battle.potionHeal(characters[0], characters[1], characters[2], characters[turn - 1]);
 
-                                        currentRoom.battle.strengthInator(characters[0], characters[1], characters[2], characters[turn-1]);
+                            } else if (characters[turn - 1].job.name == "hunter") {
 
-                                    }
-                                    else if (characters[turn - 1].job.name == "hunter") {
+                                currentRoom.battle.setTrap(characters[turn - 1], currentRoom.chosenMonster);
 
-                                        currentRoom.battle.herbalBrew(characters[turn-1], characters[0], characters[1], characters[2]);
+                            } else if (characters[turn - 1].job.name == "grappler") {
 
-                                    }
-                                    else if (characters[turn - 1].job.name == "grappler") {
+                                currentRoom.battle.suplex(characters[turn - 1], currentRoom.chosenMonster);
 
-                                        currentRoom.battle.sevenEmeralds(characters[turn - 1]);
-
-                                    }
-
-                                case 4:
-                                    if(characters[turn - 1].getWeaponLegendary() || characters[turn - 1].getArmorLegendary()) {
-
-                                        if (characters[turn - 1].job.name == "knight") {
-
-                                            currentRoom.battle.valorForm(characters[turn - 1]);
-
-                                        }
-                                        else if (characters[turn - 1].job.name == "mercenary") {
-
-                                            currentRoom.battle.assassinate(characters[turn - 1], currentRoom.chosenMonster);
-
-                                        }
-                                        else if (characters[turn - 1].job.name == "alchemist") {
-
-                                            currentRoom.battle.strengthInator(characters[0], characters[1], characters[2], characters[turn-1]);
-
-                                        }
-                                        else if (characters[turn - 1].job.name == "hunter") {
-
-                                            currentRoom.battle.herbalBrew(characters[turn-1], characters[0], characters[1], characters[2]);
-
-                                        }
-                                        else if (characters[turn - 1].job.name == "grappler") {
-
-                                            currentRoom.battle.sevenEmeralds(characters[turn - 1]);
-
-                                        }
-
-                                        if(!currentRoom.battle.spellFail){
-
-                                            error = true;
-
-                                        }
-                                    }
-                                    else{
-
-                                        error = true;
-
-                                    }
                             }
+                            if (!currentRoom.battle.spellFail) {
 
+                                error = true;
+
+                            } else {
+
+                                turn++;
+
+                            }
+                            break;
+
+                        case 4:
+                            if (characters[turn - 1].getWeaponLegendary() || characters[turn - 1].getArmorLegendary()) {
+
+                                if (characters[turn - 1].job.name == "knight") {
+
+                                    currentRoom.battle.valorForm(characters[turn - 1]);
+
+                                } else if (characters[turn - 1].job.name == "mercenary") {
+
+                                    currentRoom.battle.assassinate(characters[turn - 1], currentRoom.chosenMonster);
+
+                                } else if (characters[turn - 1].job.name == "alchemist") {
+
+                                    currentRoom.battle.strengthInator(characters[0], characters[1], characters[2], characters[turn - 1]);
+
+                                } else if (characters[turn - 1].job.name == "hunter") {
+
+                                    currentRoom.battle.herbalBrew(characters[turn - 1], characters[0], characters[1], characters[2]);
+
+                                } else if (characters[turn - 1].job.name == "grappler") {
+
+                                    currentRoom.battle.sevenEmeralds(characters[turn - 1]);
+
+                                }
+
+                                if (!currentRoom.battle.spellFail) {
+
+                                    error = true;
+
+                                } else {
+
+                                    turn++;
+
+                                }
+                            } else {
+
+                                error = true;
+
+                            }
                     }
-                }
-                if(characters[0].dead && characters[1].dead && characters[2].dead){
-
-
-
                 }
                 if(currentRoom.getChosenMonster().dead){
 
                     currentRoom.setFight(false);
                     currentRoom.setFightStart(true);
+                    int reward = new Random().nextInt(2);
+                    int legendary = new Random().nextInt(50);
+                    if(reward == 0){
+
+                        Armor loot;
+
+                        if(legendary >= 49 || currentRoom.chosenMonster.isBoss()){
+
+                            loot = database.makeLegendaryArmor(characters[0].job.name, characters[1].job.name, characters[2].job.name);
+
+                        }else{
+
+                            loot = database.makeArmor(characters[0].job.name, characters[1].job.name, characters[2].job.name);
+
+                        }
+
+                        this.reward = loot.getName();
+
+                    }
+                    else{
+
+                        Weapon loot;
+
+                        if(legendary >= 49 || currentRoom.chosenMonster.isBoss()){
+
+                            loot = database.makeLegendaryWeapon(characters[0].job.name, characters[1].job.name, characters[2].job.name);
+
+                        }else{
+
+                            loot = database.makeWeapon(characters[0].job.name, characters[1].job.name, characters[2].job.name);
+
+                        }
+
+                        this.reward = loot.getWeaponName();
+
+                    }
+                    if(currentRoom.chosenMonster.isBoss()){
+
+                        totalKeys++;
+                        if(currentRoom.getRoomName() == "garden"){
+
+                            gardenDoorOpen = false;
+
+                        }
+                        else if(currentRoom.getRoomName() == "catacombs"){
+
+                            catacombsDoorOpen = false;
+
+                        }
+                        else if(currentRoom.getRoomName() == "belfry"){
+
+                            belfryDoorOpen = false;
+
+                        }
+                        else if(currentRoom.getRoomName() == "prison"){
+
+                            prisonDoorOpen = false;
+
+                        }
+                        gameProgress = 1;
+
+                    }
+                    states++;
+
+                }
+                else{
+
+                    int randomTarget = new Random().nextInt(3);
+                    currentRoom.battle.randomMonsterAttack(currentRoom.chosenMonster, characters[randomTarget], characters[0], characters[1], characters[2]);
+                    if(characters[0].dead && characters[1].dead && characters[2].dead){
+
+                        gameOver = true;
+
+                    }
+                    else{
+
+                        turn = 1;
+
+                    }
 
                 }
 
 
-            } else{
-
             }
 
         }
-        error = true;
+
+
 
     }
 
@@ -423,6 +499,7 @@ public class Game {
     }
 
     public String gameOver(){
+
         return "As your final member falls, you hear the laughter of Astoth mocking you, and the final hope of the world collapses." + "\n" +
                 "THE END";
     }

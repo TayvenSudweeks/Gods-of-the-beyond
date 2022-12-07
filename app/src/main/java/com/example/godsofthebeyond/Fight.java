@@ -10,22 +10,6 @@ public class Fight {
     private Character monsterTarget;
     boolean spellFail;
 
-    public String getFirst() {
-        return first;
-    }
-
-    public String getSecond() {
-        return second;
-    }
-
-    public String getThird() {
-        return third;
-    }
-
-    public String getFourth() {
-        return fourth;
-    }
-
     public void playerAttack(Character attacker, Monster target){
         hitChance = new Random().nextInt(attacker.getAcc());
         if(hitChance < 10){

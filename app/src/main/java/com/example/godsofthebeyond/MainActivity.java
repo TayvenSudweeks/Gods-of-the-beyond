@@ -41,16 +41,29 @@ public class MainActivity extends AppCompatActivity {
 
     public void SubmitText(View view){
         game.gameEvents(etInput.getText().toString());
-        etInput.setText("");
-        updateCharacters();
-        output.setText(game.gameText());
-        tvOptions.setText((game.choicesText()));
-        if(game.error){
+        if(game.gameOver){
 
-            Toast toast = Toast.makeText(getApplicationContext(),"Please enter a valid input.", Toast.LENGTH_SHORT);
-            toast.show();
-            game.error = false;
+            etInput.setText("");
+            etInput.setEnabled(false);
+            characterTexts[0].setText("");
+            characterTexts[1].setText("");
+            characterTexts[2].setText("");
+            tvOptions.setText("");
+            output.setText(game.gameOver());
 
+        }
+        else {
+            etInput.setText("");
+            updateCharacters();
+            output.setText(game.gameText());
+            tvOptions.setText((game.choicesText()));
+            if (game.error) {
+
+                Toast toast = Toast.makeText(getApplicationContext(), "Please enter a valid input.", Toast.LENGTH_SHORT);
+                toast.show();
+                game.error = false;
+
+            }
         }
     }
 
