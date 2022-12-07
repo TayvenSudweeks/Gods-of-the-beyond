@@ -136,12 +136,23 @@ public class Game {
                 return rewardText;
 
             }
+            else if(states == 3){
+                totalText = currentRoom.getRoomText();
+            }
             else if(currentRoom.getFight()) {
 
                 return totalText + "\n" + "\n" + currentRoom.getMonsterStats() + "\n" + "\n" + "What does " + (characters[turn - 1].name) + " do?";
 
             }
             return totalText;
+
+            /*if(gameProgress == 3){
+                return "The symbols on the final door glow softly as you turn each key in succession, and you hear a loud *clunk* as the lock that was keeping " +
+                        "you out gives way. You ready yourself for the final battle and enter the ornate middle door. " + "\n" +
+                        "Towering above you in a heap of flesh and grotesque pieces, stands Astoth. The behemoth had clearly been waiting for someone to approach." +
+                        "Every bone in your body screams at you to get out as fast as you can, but you hold strong, knowing you are likely the last thing that stands between " +
+                        "this world and oblivion. ";
+            }*/
 
         }
         return null;
@@ -200,6 +211,9 @@ public class Game {
 
                 return "1: Equip It   2: Leave It";
 
+            }
+            else if(states == 3){
+                return "1. Continue";
             }
             else if(currentRoom.getFight()){
 
@@ -334,84 +348,53 @@ public class Game {
         }
         else if(gameProgress == 2){
 
-            if(currentRoom.getFight()){
+            if(states == 3){
+                currentRoom.runEvent();
+                states = 2;
+            }
+            else {
+                if (currentRoom.getFight()) {
 
-                if(currentRoom.getFightStart()){
+                    if (currentRoom.getFightStart()) {
 
-                    currentRoom.setMonsters();
+                        currentRoom.setMonsters();
 
-                }
-                if(turn <= 3){
+                    }
+                    if (turn <= 3) {
 
-                    chosenBattleOption = Integer.parseInt(input);
-                    switch(chosenBattleOption) {
+                        chosenBattleOption = Integer.parseInt(input);
+                        switch (chosenBattleOption) {
 
-                        case 1:
-                            currentRoom.battle.playerAttack(characters[turn - 1], currentRoom.chosenMonster);
-                            turn++;
-                            break;
-                        case 2:
-                            currentRoom.battle.playerSpell(characters[turn - 1], currentRoom.chosenMonster);
-                            turn++;
-                            break;
-                        case 3:
-                            if (characters[turn - 1].job.name == "knight") {
-
-                                currentRoom.battle.taunt(characters[turn - 1], currentRoom.chosenMonster);
-
-                            } else if (characters[turn - 1].job.name == "mercenary") {
-
-                                currentRoom.battle.lockTarget(characters[turn - 1]);
-
-                            } else if (characters[turn - 1].job.name == "alchemist") {
-
-                                currentRoom.battle.potionHeal(characters[0], characters[1], characters[2], characters[turn - 1]);
-
-                            } else if (characters[turn - 1].job.name == "hunter") {
-
-                                currentRoom.battle.setTrap(characters[turn - 1], currentRoom.chosenMonster);
-
-                            } else if (characters[turn - 1].job.name == "grappler") {
-
-                                currentRoom.battle.suplex(characters[turn - 1], currentRoom.chosenMonster);
-
-                            }
-                            if (!currentRoom.battle.spellFail) {
-
-                                error = true;
-
-                            } else {
-
+                            case 1:
+                                currentRoom.battle.playerAttack(characters[turn - 1], currentRoom.chosenMonster);
                                 turn++;
-
-                            }
-                            break;
-
-                        case 4:
-                            if (characters[turn - 1].getWeaponLegendary() || characters[turn - 1].getArmorLegendary()) {
-
+                                break;
+                            case 2:
+                                currentRoom.battle.playerSpell(characters[turn - 1], currentRoom.chosenMonster);
+                                turn++;
+                                break;
+                            case 3:
                                 if (characters[turn - 1].job.name == "knight") {
 
-                                    currentRoom.battle.valorForm(characters[turn - 1]);
+                                    currentRoom.battle.taunt(characters[turn - 1], currentRoom.chosenMonster);
 
                                 } else if (characters[turn - 1].job.name == "mercenary") {
 
-                                    currentRoom.battle.assassinate(characters[turn - 1], currentRoom.chosenMonster);
+                                    currentRoom.battle.lockTarget(characters[turn - 1]);
 
                                 } else if (characters[turn - 1].job.name == "alchemist") {
 
-                                    currentRoom.battle.strengthInator(characters[0], characters[1], characters[2], characters[turn - 1]);
+                                    currentRoom.battle.potionHeal(characters[0], characters[1], characters[2], characters[turn - 1]);
 
                                 } else if (characters[turn - 1].job.name == "hunter") {
 
-                                    currentRoom.battle.herbalBrew(characters[turn - 1], characters[0], characters[1], characters[2]);
+                                    currentRoom.battle.setTrap(characters[turn - 1], currentRoom.chosenMonster);
 
                                 } else if (characters[turn - 1].job.name == "grappler") {
 
-                                    currentRoom.battle.sevenEmeralds(characters[turn - 1]);
+                                    currentRoom.battle.suplex(characters[turn - 1], currentRoom.chosenMonster);
 
                                 }
-
                                 if (!currentRoom.battle.spellFail) {
 
                                     error = true;
@@ -421,132 +404,164 @@ public class Game {
                                     turn++;
 
                                 }
+                                break;
+
+                            case 4:
+                                if (characters[turn - 1].getWeaponLegendary() || characters[turn - 1].getArmorLegendary()) {
+
+                                    if (characters[turn - 1].job.name == "knight") {
+
+                                        currentRoom.battle.valorForm(characters[turn - 1]);
+
+                                    } else if (characters[turn - 1].job.name == "mercenary") {
+
+                                        currentRoom.battle.assassinate(characters[turn - 1], currentRoom.chosenMonster);
+
+                                    } else if (characters[turn - 1].job.name == "alchemist") {
+
+                                        currentRoom.battle.strengthInator(characters[0], characters[1], characters[2], characters[turn - 1]);
+
+                                    } else if (characters[turn - 1].job.name == "hunter") {
+
+                                        currentRoom.battle.herbalBrew(characters[turn - 1], characters[0], characters[1], characters[2]);
+
+                                    } else if (characters[turn - 1].job.name == "grappler") {
+
+                                        currentRoom.battle.sevenEmeralds(characters[turn - 1]);
+
+                                    }
+
+                                    if (!currentRoom.battle.spellFail) {
+
+                                        error = true;
+
+                                    } else {
+
+                                        turn++;
+
+                                    }
+                                } else {
+
+                                    error = true;
+
+                                }
+                                break;
+                        }
+                    }
+                    if (currentRoom.getChosenMonster().dead) {
+
+                        currentRoom.setFight(false);
+                        currentRoom.setFightStart(true);
+                        int reward = new Random().nextInt(2);
+                        if (reward == 0) {
+
+                            this.rewardType = "armor";
+                            Armor loot;
+
+                            if (currentRoom.chosenMonster.isBoss()) {
+
+                                loot = database.makeLegendaryArmor(characters[0].job.name, characters[1].job.name, characters[2].job.name);
+
                             } else {
 
-                                error = true;
+                                loot = database.makeArmor(characters[0].job.name, characters[1].job.name, characters[2].job.name);
 
                             }
-                            break;
+
+                            this.rewardArmor = loot;
+
+                        } else {
+
+                            this.rewardType = "weapon";
+                            Weapon loot;
+
+                            if (currentRoom.chosenMonster.isBoss()) {
+
+                                loot = database.makeLegendaryWeapon(characters[0].job.name, characters[1].job.name, characters[2].job.name);
+
+                            } else {
+
+                                loot = database.makeWeapon(characters[0].job.name, characters[1].job.name, characters[2].job.name);
+
+                            }
+
+                            this.rewardWeapon = loot;
+
+                        }
+                        if (currentRoom.chosenMonster.isBoss()) {
+
+                            totalKeys++;
+                            if (currentRoom.getRoomName() == "garden") {
+
+                                gardenDoorOpen = false;
+
+                            } else if (currentRoom.getRoomName() == "catacombs") {
+
+                                catacombsDoorOpen = false;
+
+                            } else if (currentRoom.getRoomName() == "belfry") {
+
+                                belfryDoorOpen = false;
+
+                            } else if (currentRoom.getRoomName() == "prison") {
+
+                                prisonDoorOpen = false;
+
+                            }
+                            gameProgress = 1;
+
+                        }
+                        currentRoom.battle.endFight(characters[0], characters[1], characters[2]);
+                        states = 3;
+                        //currentRoom.runEvent();
+
+                    } else {
+
+                        int randomTarget = new Random().nextInt(3);
+                        currentRoom.battle.randomMonsterAttack(currentRoom.chosenMonster, characters[randomTarget], characters[0], characters[1], characters[2]);
+                        turn = 1;
+
                     }
+                    return;
+
+                } else {
+
+                    if (Integer.parseInt(input) == currentRoom.getBadOption()) {
+
+                        int characterHarmed = new Random().nextInt(3);
+                        if (currentRoom.getRoomName() == "garden") {
+
+                            characters[characterHarmed].setPhysDef(characters[characterHarmed].getPhysdef() - 1);
+                            characters[characterHarmed].setMagDef(characters[characterHarmed].getMagDef() - 1);
+
+                        } else if (currentRoom.getRoomName() == "belfry") {
+
+                            currentRoom.setFight(true);
+
+                        } else if (currentRoom.getRoomName() == "catacombs") {
+
+                            characters[characterHarmed].setCurrSan(characters[characterHarmed].getCurrSan() - 2);
+
+                        } else if (currentRoom.getRoomName() == "prison") {
+
+                            characters[characterHarmed].setCurrReso(characters[characterHarmed].getCurrReso() - 2);
+
+                        }
+
+                    }
+
                 }
-                if(currentRoom.getChosenMonster().dead){
-
-                    currentRoom.setFight(false);
-                    currentRoom.setFightStart(true);
-                    int reward = new Random().nextInt(2);
-                    if(reward == 0){
-
-                        this.rewardType = "armor";
-                        Armor loot;
-
-                        if(currentRoom.chosenMonster.isBoss()){
-
-                            loot = database.makeLegendaryArmor(characters[0].job.name, characters[1].job.name, characters[2].job.name);
-
-                        }else{
-
-                            loot = database.makeArmor(characters[0].job.name, characters[1].job.name, characters[2].job.name);
-
-                        }
-
-                        this.rewardArmor = loot;
-
-                    }
-                    else{
-
-                        this.rewardType = "weapon";
-                        Weapon loot;
-
-                        if(currentRoom.chosenMonster.isBoss()){
-
-                            loot = database.makeLegendaryWeapon(characters[0].job.name, characters[1].job.name, characters[2].job.name);
-
-                        }else{
-
-                            loot = database.makeWeapon(characters[0].job.name, characters[1].job.name, characters[2].job.name);
-
-                        }
-
-                        this.rewardWeapon = loot;
-
-                    }
-                    if(currentRoom.chosenMonster.isBoss()){
-
-                        totalKeys++;
-                        if(currentRoom.getRoomName() == "garden"){
-
-                            gardenDoorOpen = false;
-
-                        }
-                        else if(currentRoom.getRoomName() == "catacombs"){
-
-                            catacombsDoorOpen = false;
-
-                        }
-                        else if(currentRoom.getRoomName() == "belfry"){
-
-                            belfryDoorOpen = false;
-
-                        }
-                        else if(currentRoom.getRoomName() == "prison"){
-
-                            prisonDoorOpen = false;
-
-                        }
-                        gameProgress = 1;
-
-                    }
-                    currentRoom.battle.endFight(characters[0], characters[1], characters[2]);
-                    currentRoom.runEvent();
-                    states++;
-
-                }
-                else{
-
-                    int randomTarget = new Random().nextInt(3);
-                    currentRoom.battle.randomMonsterAttack(currentRoom.chosenMonster, characters[randomTarget], characters[0], characters[1], characters[2]);
-                    turn = 1;
-
-                }
-                return;
-
             }
-            else{
-
-                if(Integer.parseInt(input) == currentRoom.getBadOption()){
-
-                    int characterHarmed = new Random().nextInt(3);
-                    if(currentRoom.getRoomName() == "garden"){
-
-                        characters[characterHarmed].setPhysDef(characters[characterHarmed].getPhysdef() - 1);
-                        characters[characterHarmed].setMagDef(characters[characterHarmed].getMagDef() - 1);
-
-                    }
-                    else if(currentRoom.getRoomName() == "belfry"){
-
-                        currentRoom.setFight(true);
-
-                    }
-                    else if(currentRoom.getRoomName() == "catacombs"){
-
-                        characters[characterHarmed].setCurrSan(characters[characterHarmed].getCurrSan() - 2);
-
-                    }
-                    else if(currentRoom.getRoomName() == "prison"){
-
-                        characters[characterHarmed].setCurrReso(characters[characterHarmed].getCurrReso() - 2);
-
-                    }
-
-                }
-
-            }
-            currentRoom.runEvent();
+            states = 3;
+            //currentRoom.runEvent();
 
         }
         else if(gameProgress == 3){
 
 
+            currentRoom.setFinalBoss();
+            currentRoom.setFight(true);
+            currentRoom.setFightStart(true);
 
         }
 

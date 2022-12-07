@@ -26,6 +26,10 @@ public class Room {
 
     }
 
+    public void setFinalBoss(){
+        chosenMonster = new Monster("astoth");
+    }
+
     public void setMonsters(){
 
         monsters[0] = new Monster("goblin");
