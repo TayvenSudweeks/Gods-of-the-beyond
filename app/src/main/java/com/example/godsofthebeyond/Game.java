@@ -141,7 +141,9 @@ public class Game {
                 return totalText + "\n" + "\n" + currentRoom.getMonsterStats() + "\n" + "\n" + "What does " + (characters[turn - 1].name) + " do?";
 
             }
-            return totalText;
+            else if(!currentRoom.getFight()) {
+                return totalText;
+            }
 
         }
         return null;
@@ -213,6 +215,11 @@ public class Game {
             }
 
         }
+        else if(gameProgress == 3){
+
+
+
+        }
         return null;
 
     }
@@ -257,7 +264,6 @@ public class Game {
                                 characters[characterIndex] = new Character(this.characterName, "grappler");
                                 break;
                         }
-                        characterJobs[characterIndex] = (Integer.parseInt(input));
                         states = 1;
                         if (characterIndex <= 1) {
 
@@ -338,8 +344,23 @@ public class Game {
 
                 if(currentRoom.getFightStart()){
 
-                    currentRoom.setMonsters();
-
+                    if (currentRoom.isBossFight()){
+                        if(currentRoom.getRoomName() == "garden") {
+                            currentRoom.chosenMonster = new Monster("mass of vines");
+                        }
+                        else if(currentRoom.getRoomName() == "prison"){
+                            currentRoom.chosenMonster = new Monster("jailer");
+                        }
+                        else if(currentRoom.getRoomName() == "catacombs"){
+                            currentRoom.chosenMonster = new Monster("eldritch draugr");
+                        }
+                        else if(currentRoom.getRoomName() == "belfry"){
+                            currentRoom.chosenMonster = new Monster("cult leader");
+                        }
+                    }
+                    else {
+                        currentRoom.setMonsters();
+                    }
                 }
                 if(turn <= 3){
 
@@ -376,7 +397,7 @@ public class Game {
                                 currentRoom.battle.suplex(characters[turn - 1], currentRoom.chosenMonster);
 
                             }
-                            if (!currentRoom.battle.spellFail) {
+                            if (currentRoom.battle.spellFail) {
 
                                 error = true;
 
@@ -508,10 +529,9 @@ public class Game {
                     turn = 1;
 
                 }
-                return;
 
             }
-            else{
+            else if(!currentRoom.getFight()){
 
                 if(Integer.parseInt(input) == currentRoom.getBadOption()){
 

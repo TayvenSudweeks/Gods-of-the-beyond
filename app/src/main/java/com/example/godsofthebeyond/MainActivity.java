@@ -79,10 +79,10 @@ public class MainActivity extends AppCompatActivity {
 
         int charID = 0;
         if (game.getGameProgress() == 0) {
-            while (charID < 4 && game.getCharacterIndex() != 0) {
+            while (charID < 3 && game.getCharacterIndex() != 0) {
 
                 if (charID >= game.getCharacterIndex()) {
-                    return;
+                    break;
                 } else {
                     characterTexts[charID].setText(game.characters[charID].toString());
                     charID++;
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
 
-            while (charID < 4){
+            while (charID < 3){
 
                 characterTexts[charID].setText(game.characters[charID].toString());
                 charID++;

@@ -26,6 +26,10 @@ public class Room {
 
     }
 
+    public boolean isBossFight() {
+        return bossFight;
+    }
+
     public void setMonsters(){
 
         monsters[0] = new Monster("goblin");
