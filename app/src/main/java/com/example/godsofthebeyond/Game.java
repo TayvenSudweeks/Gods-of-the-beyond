@@ -305,7 +305,25 @@ public class Game {
         }
         else if(gameProgress == 2){
 
-            if(currentRoom.getFight()){
+            currentRoom.runEvent();
+            if(states == 2){
+
+
+                if(Integer.parseInt(input) == 1){
+
+                    equipReward();
+
+                }
+                states = 1;
+                if(rewardArmor.isLegendary() || rewardWeapon.isLegendary()){
+
+                    gameProgress = 1;
+
+                }
+                return;
+
+            }
+            else if(currentRoom.getFight()){
 
                 if(currentRoom.getFightStart()){
 
@@ -404,13 +422,12 @@ public class Game {
                     currentRoom.setFight(false);
                     currentRoom.setFightStart(true);
                     int reward = new Random().nextInt(2);
-                    int legendary = new Random().nextInt(50);
                     if(reward == 0){
 
                         this.rewardType = "armor";
                         Armor loot;
 
-                        if(legendary >= 49 || currentRoom.chosenMonster.isBoss()){
+                        if(currentRoom.chosenMonster.isBoss()){
 
                             loot = database.makeLegendaryArmor(characters[0].job.name, characters[1].job.name, characters[2].job.name);
 
@@ -428,7 +445,7 @@ public class Game {
                         this.rewardType = "weapon";
                         Weapon loot;
 
-                        if(legendary >= 49 || currentRoom.chosenMonster.isBoss()){
+                        if(currentRoom.chosenMonster.isBoss()){
 
                             loot = database.makeLegendaryWeapon(characters[0].job.name, characters[1].job.name, characters[2].job.name);
 
@@ -473,25 +490,43 @@ public class Game {
                 }
 
             }
-            else if(states == 2){
-
-                if(Integer.parseInt(input) == 1){
-
-                    equipReward();
-
-                }
-                states = 1;
-
-            }
             else{
 
+                if(Integer.parseInt(input) == currentRoom.getBadOption()){
 
+                    int characterHarmed = new Random().nextInt(3);
+                    if(currentRoom.getRoomName() == "garden"){
+
+                        characters[characterHarmed].setPhysDef(characters[characterHarmed].getPhysdef() - 1);
+                        characters[characterHarmed].setMagDef(characters[characterHarmed].getMagDef() - 1);
+
+                    }
+                    else if(currentRoom.getRoomName() == "belfry"){
+
+                        currentRoom.setFight(true);
+
+                    }
+                    else if(currentRoom.getRoomName() == "catacombs"){
+
+                        characters[characterHarmed].setCurrSan(characters[characterHarmed].getCurrSan() - 2);
+
+                    }
+                    else if(currentRoom.getRoomName() == "prison"){
+
+                        characters[characterHarmed].setCurrReso(characters[characterHarmed].getCurrReso() - 2);
+
+                    }
+
+                }
 
             }
 
         }
+        else if(gameProgress == 3){
 
 
+
+        }
 
     }
 
