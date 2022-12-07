@@ -324,7 +324,6 @@ public class Game {
                 System.out.println(chosenRoom);
                 currentRoom.setRoomName(chosenRoom);
                 System.out.println(currentRoom.getRoomName());
-                currentRoom.setMonsters();
                 currentRoom.runEvent();
                 gameProgress++;
 
@@ -359,7 +358,7 @@ public class Game {
                     currentRoom.setMonsters();
 
                 }
-                if(turn < 3){
+                if(turn <= 4){
 
                     chosenBattleOption = Integer.parseInt(input);
                     switch(chosenBattleOption) {
@@ -445,8 +444,6 @@ public class Game {
 
                             }
                     }
-                } else if(turn >= 3){
-                    turn = 1;
                 }
                 if(currentRoom.getChosenMonster().dead){
 
@@ -581,7 +578,7 @@ public class Game {
                 if(characters[x].job.name.contains(rewardWeapon.getJobReq())){
 
                     characterReward = x;
-                    break;
+
                 }
 
             }
