@@ -82,7 +82,7 @@ public class Monster {
             this.spd = 3;
             this.roomtype = "belfry";
             this.boss = true;
-        } else if(monsterName == "zombie"){
+        } else if(monsterName == "gargoyle"){
             this.monsterName = monsterName;
             this.maxReso = 40;
             this.currReso = 40;

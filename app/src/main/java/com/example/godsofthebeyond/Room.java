@@ -10,8 +10,8 @@ public class Room {
     private String roomText;
     private boolean fight;
     private boolean bossFight;
-    private String roomOutcome1;
-    private String roomOutcome2;
+    String roomOutcome1;
+    String roomOutcome2;
     private int roomProgress;
     Monster[] monsters = new Monster[4];
     private Monster chosenMonster;
@@ -238,5 +238,4 @@ public class Room {
             }
         }
     }
-
 }
