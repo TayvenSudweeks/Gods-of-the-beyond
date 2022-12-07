@@ -6,25 +6,8 @@ import java.util.Random;
 public class Fight {
 
     private int hitChance;
-    private String first, second, third, fourth;
     private Character monsterTarget;
     boolean spellFail;
-
-    public String getFirst() {
-        return first;
-    }
-
-    public String getSecond() {
-        return second;
-    }
-
-    public String getThird() {
-        return third;
-    }
-
-    public String getFourth() {
-        return fourth;
-    }
 
     public void playerAttack(Character attacker, Monster target){
         hitChance = new Random().nextInt(attacker.getAcc());
@@ -1243,18 +1226,6 @@ public class Fight {
             spellFail = true;
         }
     }
-
-    public Character chooseTarget(Monster m1, Character ch1, Character ch2, Character ch3){
-        int target = new Random().nextInt(3);
-        switch (target) {
-            case 0: return ch1;
-            case 1: return ch2;
-            case 2: return ch3;
-        }
-        return null;
-    }
-
-
 
     public void checkDead(Character ch1){
         if(ch1.currReso <= 0){
