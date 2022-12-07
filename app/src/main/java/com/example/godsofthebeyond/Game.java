@@ -25,7 +25,7 @@ public class Game {
     private int chosenBattleOption;
     private int turn = 1;
     private boolean firstTime = true;
-    boolean gameOver = false;
+    boolean gameOver;
     private String rewardType;
     Weapon rewardWeapon = new Weapon();
     Armor rewardArmor = new Armor();
@@ -122,7 +122,7 @@ public class Game {
             totalText = currentRoom.getRoomText();
             if(states == 2){
 
-                String rewardText = "You Win!" + "\n" + "\n" + "You found a ";
+                String rewardText = "You Win!" + "\n" + "\n" + " You found a ";
                 if(rewardType == "weapon"){
 
                     rewardText += rewardWeapon.getWeaponName() + " for a " + rewardWeapon.getJobReq() + ". What do you do?";
@@ -321,6 +321,7 @@ public class Game {
                 }
 
                 chosenRoom = rooms[Integer.parseInt(input) - 1];
+                totalDoors = 0;
                 System.out.println(chosenRoom);
                 currentRoom.setRoomName(chosenRoom);
                 System.out.println(currentRoom.getRoomName());
@@ -333,33 +334,14 @@ public class Game {
         }
         else if(gameProgress == 2){
 
-
-            if(states == 2){
-
-                if(Integer.parseInt(input) == 1){
-
-                    equipReward();
-
-                }
-                states = 1;
-                if(rewardArmor.isLegendary() || rewardWeapon.isLegendary()){
-
-                    gameProgress = 1;
-                    return;
-
-                }
-                currentRoom.runEvent();
-                return;
-
-            }
-            else if(currentRoom.getFight()){
+            if(currentRoom.getFight()){
 
                 if(currentRoom.getFightStart()){
 
                     currentRoom.setMonsters();
 
                 }
-                if(turn <= 4){
+                if(turn <= 3){
 
                     chosenBattleOption = Integer.parseInt(input);
                     switch(chosenBattleOption) {
@@ -444,9 +426,8 @@ public class Game {
                                 error = true;
 
                             }
+                            break;
                     }
-                } else{
-                    turn = 1;
                 }
                 if(currentRoom.getChosenMonster().dead){
 
@@ -516,10 +497,17 @@ public class Game {
 
                     }
                     currentRoom.battle.endFight(characters[0], characters[1], characters[2]);
+                    currentRoom.runEvent();
                     states++;
 
                 }
-                currentRoom.runEvent();
+                else{
+
+                    int randomTarget = new Random().nextInt(3);
+                    currentRoom.battle.randomMonsterAttack(currentRoom.chosenMonster, characters[randomTarget], characters[0], characters[1], characters[2]);
+                    turn = 1;
+
+                }
                 return;
 
             }
@@ -581,6 +569,7 @@ public class Game {
                 if(characters[x].job.name.contains(rewardWeapon.getJobReq())){
 
                     characterReward = x;
+                    break;
 
                 }
 
@@ -596,6 +585,7 @@ public class Game {
                 if(characters[x].job.name.contains(rewardArmor.getJobReq())){
 
                     characterReward = x;
+                    break;
 
                 }
 

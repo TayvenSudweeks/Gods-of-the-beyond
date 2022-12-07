@@ -126,19 +126,19 @@ public class Character {
     }
 
     public void unequipWeapon(){
-        this.physAtk -= job.getBasePhysAtk();
-        this.setPhysAtk -= job.getBasePhysAtk();
-        this.magAtk -= job.getBaseMagAtk();
-        this.setMagAtk -= job.getBasePhysAtk();
+        this.physAtk = job.getBasePhysAtk();
+        this.setPhysAtk = job.getBasePhysAtk();
+        this.magAtk = job.getBaseMagAtk();
+        this.setMagAtk = job.getBasePhysAtk();
         this.acc = 75;
         weaponLegendary = false;
     }
 
     public void unequipArmor(){
-        this.magDef -= job.getBaseMagDef();
-        this.setMagDef -= job.getBaseMagDef();
-        this.physDef -= job.getBasePhysDef();
-        this.setPhysDef -= job.getBasePhysDef();
+        this.magDef = job.getBaseMagDef();
+        this.setMagDef = job.getBaseMagDef();
+        this.physDef = job.getBasePhysDef();
+        this.setPhysDef = job.getBasePhysDef();
         this.evade = 0;
         armorLegendary = false;
 
