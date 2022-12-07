@@ -340,23 +340,19 @@ public class Game {
         }
         else if(gameProgress == 2){
 
+            if(states == 2){
+
+                equipReward();
+                states = 1;
+                gameProgress = 1;
+
+            }
             if(currentRoom.getFight()){
 
                 if(currentRoom.getFightStart()){
 
                     if (currentRoom.isBossFight()){
-                        if(currentRoom.getRoomName() == "garden") {
-                            currentRoom.chosenMonster = new Monster("mass of vines");
-                        }
-                        else if(currentRoom.getRoomName() == "prison"){
-                            currentRoom.chosenMonster = new Monster("jailer");
-                        }
-                        else if(currentRoom.getRoomName() == "catacombs"){
-                            currentRoom.chosenMonster = new Monster("eldritch draugr");
-                        }
-                        else if(currentRoom.getRoomName() == "belfry"){
-                            currentRoom.chosenMonster = new Monster("cult leader");
-                        }
+                        currentRoom.setBosses();
                     }
                     else {
                         currentRoom.setMonsters();
@@ -533,26 +529,23 @@ public class Game {
             }
             else if(!currentRoom.getFight()){
 
-                if(Integer.parseInt(input) == currentRoom.getBadOption()){
+                if(Integer.parseInt(input) == currentRoom.getBadOption()) {
 
                     int characterHarmed = new Random().nextInt(3);
-                    if(currentRoom.getRoomName() == "garden"){
+                    if (currentRoom.getRoomName() == "garden") {
 
                         characters[characterHarmed].setPhysDef(characters[characterHarmed].getPhysdef() - 1);
                         characters[characterHarmed].setMagDef(characters[characterHarmed].getMagDef() - 1);
 
-                    }
-                    else if(currentRoom.getRoomName() == "belfry"){
+                    } else if (currentRoom.getRoomName() == "belfry") {
 
                         currentRoom.setFight(true);
 
-                    }
-                    else if(currentRoom.getRoomName() == "catacombs"){
+                    } else if (currentRoom.getRoomName() == "catacombs") {
 
                         characters[characterHarmed].setCurrSan(characters[characterHarmed].getCurrSan() - 2);
 
-                    }
-                    else if(currentRoom.getRoomName() == "prison"){
+                    } else if (currentRoom.getRoomName() == "prison") {
 
                         characters[characterHarmed].setCurrReso(characters[characterHarmed].getCurrReso() - 2);
 

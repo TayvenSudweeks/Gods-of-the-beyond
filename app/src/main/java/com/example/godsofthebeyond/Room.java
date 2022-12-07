@@ -47,7 +47,7 @@ public class Room {
         }
         else if(roomName == "belfry"){
 
-            monsters[3] = new Monster("zombie");
+            monsters[3] = new Monster("gargoyle");
 
         }
         else if(roomName == "prison"){
@@ -58,6 +58,32 @@ public class Room {
 
         Random random = new Random();
         chosenMonster = monsters[random.nextInt(5)];
+        fightStart = false;
+
+    }
+
+    public void setBosses(){
+
+        if(roomName == "garden"){
+
+            chosenMonster = new Monster("mass of vines");
+
+        }
+        else if(roomName == "belfry"){
+
+            chosenMonster = new Monster("cult leader");
+
+        }
+        else if(roomName == "catacombs"){
+
+            chosenMonster = new Monster("eldritch draugr");
+
+        }
+        else if(roomName == "prison"){
+
+            chosenMonster = new Monster("jailer");
+
+        }
         fightStart = false;
 
     }
