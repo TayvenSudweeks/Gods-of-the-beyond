@@ -42,7 +42,7 @@ public class Room {
         }
         else if(roomName == "belfry"){
 
-            monsters[3] = new Monster("zombie");
+            monsters[3] = new Monster("gargoyle");
 
         }
         else if(roomName == "prison"){

@@ -18,7 +18,21 @@ public class Character {
     private int spd, setSpd;
     private int acc;
     private int evade;
+    private boolean weaponLegendary = false;
+    private boolean armorLegendary = false;
     public boolean dead;
+
+    public boolean getWeaponLegendary(){
+
+        return weaponLegendary;
+
+    }
+
+    public boolean getArmorLegendary(){
+
+
+        return armorLegendary;
+    }
 
     Character(String name, String job){
         this.name = name;
@@ -91,6 +105,11 @@ public class Character {
         this.magAtk += weapon.getMagVal();
         this.setMagAtk += weapon.getMagVal();
         this.acc = weapon.getAccVal();
+        if(weapon.isLegendary()){
+
+            weaponLegendary = true;
+
+        }
     }
 
     public void equipArmor(Armor armor){
@@ -99,6 +118,11 @@ public class Character {
         this.physDef += armor.getPhysDef();
         this.setPhysDef += armor.getPhysDef();
         this.evade = armor.getEvade();
+        if(armor.isLegendary()){
+
+            armorLegendary = true;
+
+        }
     }
 
     public void unequipWeapon(Weapon weapon){
@@ -107,6 +131,11 @@ public class Character {
         this.magAtk -= weapon.getMagVal();
         this.setMagAtk -= weapon.getMagVal();
         this.acc = weapon.getAccVal();
+        if(weapon.isLegendary()){
+
+            weaponLegendary = false;
+
+        }
     }
 
     public void unequipArmor(Armor armor){
@@ -115,6 +144,12 @@ public class Character {
         this.physDef -= armor.getPhysDef();
         this.setPhysDef -= armor.getPhysDef();
         this.evade = armor.getEvade();
+        if(armor.isLegendary()){
+
+            armorLegendary = false;
+
+        }
+
     }
 
     public void setupCharacter(){

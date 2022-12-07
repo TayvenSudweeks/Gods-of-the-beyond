@@ -313,20 +313,92 @@ public class Game {
 
                         case 1:
                             chosenBattleOption = Integer.parseInt(input);
+                            break;
                         case 2:
                             switch(chosenBattleOption){
 
                                 case 1:
-                                    currentRoom.battle.playerAttack(, currentRoom.chosenMonster);
+                                    currentRoom.battle.playerAttack(characters[turn - 1], currentRoom.chosenMonster);
+                                    break;
                                 case 2:
+                                    currentRoom.battle.playerSpell(characters[turn -1], currentRoom.chosenMonster);
+                                    break;
+                                case 3:
+                                    if (characters[turn - 1].job.name == "knight") {
 
+                                        currentRoom.battle.taunt(characters[turn - 1], currentRoom.chosenMonster);
 
+                                    }
+                                    else if (characters[turn - 1].job.name == "mercenary") {
+
+                                        currentRoom.battle.lockTarget(characters[turn - 1]);
+
+                                    }
+                                    else if (characters[turn - 1].job.name == "alchemist") {
+
+                                        currentRoom.battle.strengthInator(characters[0], characters[1], characters[2], characters[turn-1]);
+
+                                    }
+                                    else if (characters[turn - 1].job.name == "hunter") {
+
+                                        currentRoom.battle.herbalBrew(characters[turn-1], characters[0], characters[1], characters[2]);
+
+                                    }
+                                    else if (characters[turn - 1].job.name == "grappler") {
+
+                                        currentRoom.battle.sevenEmeralds(characters[turn - 1]);
+
+                                    }
+
+                                case 4:
+                                    if(characters[turn - 1].getWeaponLegendary() || characters[turn - 1].getArmorLegendary()) {
+
+                                        if (characters[turn - 1].job.name == "knight") {
+
+                                            currentRoom.battle.valorForm(characters[turn - 1]);
+
+                                        }
+                                        else if (characters[turn - 1].job.name == "mercenary") {
+
+                                            currentRoom.battle.assassinate(characters[turn - 1], currentRoom.chosenMonster);
+
+                                        }
+                                        else if (characters[turn - 1].job.name == "alchemist") {
+
+                                            currentRoom.battle.strengthInator(characters[0], characters[1], characters[2], characters[turn-1]);
+
+                                        }
+                                        else if (characters[turn - 1].job.name == "hunter") {
+
+                                            currentRoom.battle.herbalBrew(characters[turn-1], characters[0], characters[1], characters[2]);
+
+                                        }
+                                        else if (characters[turn - 1].job.name == "grappler") {
+
+                                            currentRoom.battle.sevenEmeralds(characters[turn - 1]);
+
+                                        }
+
+                                        if(!currentRoom.battle.spellFail){
+
+                                            error = true;
+
+                                        }
+                                    }
+                                    else{
+
+                                        error = true;
+
+                                    }
                             }
 
                     }
                 }
+                if(characters[0].dead && characters[1].dead && characters[2].dead){
 
 
+
+                }
                 if(currentRoom.getChosenMonster().dead){
 
                     currentRoom.setFight(false);
