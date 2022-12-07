@@ -321,6 +321,7 @@ public class Game {
                 }
 
                 chosenRoom = rooms[Integer.parseInt(input) - 1];
+                totalDoors = 0;
                 System.out.println(chosenRoom);
                 currentRoom.setRoomName(chosenRoom);
                 System.out.println(currentRoom.getRoomName());
@@ -333,25 +334,7 @@ public class Game {
         }
         else if(gameProgress == 2){
 
-            if(states == 2){
-
-                if(Integer.parseInt(input) == 1){
-
-                    equipReward();
-
-                }
-                states = 1;
-                if(rewardArmor.isLegendary() || rewardWeapon.isLegendary()){
-
-                    gameProgress = 1;
-                    return;
-
-                }
-                currentRoom.runEvent();
-                return;
-
-            }
-            else if(currentRoom.getFight()){
+            if(currentRoom.getFight()){
 
                 if(currentRoom.getFightStart()){
 
