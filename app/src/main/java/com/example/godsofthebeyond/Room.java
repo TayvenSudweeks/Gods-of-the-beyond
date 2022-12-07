@@ -13,6 +13,7 @@ public class Room {
     String roomOutcome1;
     String roomOutcome2;
     private int roomProgress;
+    private final int ROOM_CLEAR = 1;
     Monster[] monsters = new Monster[4];
     Monster chosenMonster;
     private boolean fightStart = true;
@@ -42,7 +43,7 @@ public class Room {
         }
         else if(roomName == "belfry"){
 
-            monsters[3] = new Monster("gargoyle");
+            monsters[3] = new Monster("zombie");
 
         }
         else if(roomName == "prison"){
@@ -51,8 +52,8 @@ public class Room {
 
         }
 
-        int random = new Random().nextInt(5);
-        chosenMonster = monsters[random];
+        Random random = new Random();
+        chosenMonster = monsters[random.nextInt(5)];
         fightStart = false;
 
     }
@@ -120,7 +121,7 @@ public class Room {
 
         badOption = 0;
         if (roomName == "garden") {
-            if (roomProgress == 1) {
+            if (roomProgress == ROOM_CLEAR) {
                 this.roomText = "A deep rumbling echoes throughout the garden, shaking your party's feet. Each member turns to battle the threat, but their enemy is the earth itself! " + "\n" +
                         "Long, thick vines sprout from every direction, swinging at each of you. In one of it's sickly green vines is a key made of rotten foliage and flesh. You ready your weapons! ";
                 this.roomType = "garden";
@@ -162,7 +163,7 @@ public class Room {
             }
         } else if (roomName == "prison") {
             //starts boss fight
-            if (roomProgress == 1) {
+            if (roomProgress == ROOM_CLEAR) {
                 this.roomText = "A rattling chain sounds through the prison, clanging metal against metal, and a slow, methodical stomp." + "\n" +
                         "A dark figure starts to take form through the haze, a massive humanoid with chains leaking out of his cracked skin. " +
                         "In his thick, calloused hands, he holds what appears to be a grotesque version of a jailer's key, pulsating with dark power. " +
@@ -212,7 +213,47 @@ public class Room {
         } else if (roomName == "belfry") {
             //starts boss fight
             this.roomType = "belfry";
-            if (roomProgress == 1) {
+            if (roomProgress == ROOM_CLEAR) {
+                this.roomText = "From the main tower, you hear a deep chanting rise in volume. The bricks around you begin to crumble and break, and the ground beneath your feet shakes violently." +
+                        "You venture towards the ever growing sound, as your path becomes less and less stable. As you enter the tower, the voice suddenly stops, and all goes silent." +
+                        "A slender hooded figure slowly rises and turns toward you, a wicked grin painted across his face.. 'You will come to learn the true extent of your mistake.' He states, softly yet with a deafening power." +
+                        "Behind him sits a small key, otherwise unguarded. You ready your weapons!";
+                this.fight = true;
+                this.bossFight = true;
+            } else {
+                int newRoom = new Random().nextInt(3);
+                switch (newRoom) {
+                    case 0: {
+                        this.roomText = "You come across a massive extravagant bell hanging over your head. The clapper drapes below, just within reach.";
+                        this.roomChoices = "1: Ring the bell. 2: Leave it be.";
+                        this.badOption = 1;
+                        this.fight = false;
+                        this.roomOutcome1 = "You pull hard on the rope, and a perfectly pitched ring resonates across the entire church. You can't have been the only one to hear that. A monster appears!";
+                        this.roomOutcome2 = "You stare in awe, careful not to touch this wonderful work of art.";
+                        break;
+                    }
+                    case 1: {
+                        this.roomText = "A fight starts!";
+                        this.fight = true;
+                        this.bossFight = false;
+                        break;
+                    }
+                    case 2: {
+                        this.roomText = "A set of chimes plays gently in the wind.";
+                        this.roomChoices = "1: Stay and listen. 2. Break the chimes.";
+                        this.badOption = 1;
+                        this.roomOutcome1 = "The chimes play a comforting and enchanting tune, comforting you. You feel yourself drift off..." + "\n" +
+                                "You startle awake at the sound of a monster approaching. You're surrounded!";
+                        this.roomOutcome2 = "The chimes clang loudly to the ground, the melody carried away by the wind.";
+                        this.fight = false;
+                        break;
+                    }
+                }
+                roomProgress++;
+            }
+        } else if (roomName == "catacombs") {
+            this.roomType = "catacombs";
+            if (roomProgress == ROOM_CLEAR) {
                 this.roomText = "";
                 this.fight = true;
                 this.bossFight = true;
@@ -220,21 +261,14 @@ public class Room {
                 int newRoom = new Random().nextInt(3);
                 switch (newRoom) {
                     case 0: {
-                        this.roomText = "";
-                        this.roomChoices = "";
+                        this.roomText = "The torches flicker wildly on the walls, putting you in a hypnotic trance.";
+                        this.roomChoices = "1: Put out the torches. 2: Shake yourself awake.";
+                        this.badOption = 1;
+                        this.roomOutcome1 = "";
+                        this.roomOutcome2 = "";
+                        this.fight = false;
+                        break;
                     }
-                }
-            }
-        } else if (roomName == "catacombs") {
-            this.roomType = "catacombs";
-            if (roomProgress == 1) {
-                this.roomText = "";
-                this.fight = true;
-                this.bossFight = true;
-            } else {
-                int newRoom = new Random().nextInt(3);
-                switch (newRoom) {
-                    case 0:
                 }
             }
         }
