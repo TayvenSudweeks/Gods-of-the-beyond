@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else {
 
-            while (charID < 4){
+            while (charID < 3){
 
                 characterTexts[charID].setText(game.characters[charID].toString());
                 charID++;

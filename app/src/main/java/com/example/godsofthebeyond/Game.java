@@ -324,6 +324,7 @@ public class Game {
                 System.out.println(chosenRoom);
                 currentRoom.setRoomName(chosenRoom);
                 System.out.println(currentRoom.getRoomName());
+                currentRoom.setMonsters();
                 currentRoom.runEvent();
                 gameProgress++;
 
@@ -444,6 +445,8 @@ public class Game {
 
                             }
                     }
+                } else{
+                    turn = 1;
                 }
                 if(currentRoom.getChosenMonster().dead){
 
