@@ -30,8 +30,8 @@ public class Character {
 
     public boolean getArmorLegendary(){
 
-
         return armorLegendary;
+
     }
 
     Character(String name, String job){
@@ -125,30 +125,22 @@ public class Character {
         }
     }
 
-    public void unequipWeapon(Weapon weapon){
-        this.physAtk -= weapon.getStrVal();
-        this.setPhysAtk -= weapon.getStrVal();
-        this.magAtk -= weapon.getMagVal();
-        this.setMagAtk -= weapon.getMagVal();
-        this.acc = weapon.getAccVal();
-        if(weapon.isLegendary()){
-
-            weaponLegendary = false;
-
-        }
+    public void unequipWeapon(){
+        this.physAtk -= job.getBasePhysAtk();
+        this.setPhysAtk -= job.getBasePhysAtk();
+        this.magAtk -= job.getBaseMagAtk();
+        this.setMagAtk -= job.getBasePhysAtk();
+        this.acc = 75;
+        weaponLegendary = false;
     }
 
-    public void unequipArmor(Armor armor){
-        this.magDef -= armor.getMagDef();
-        this.setMagDef -= armor.getMagDef();
-        this.physDef -= armor.getPhysDef();
-        this.setPhysDef -= armor.getPhysDef();
-        this.evade = armor.getEvade();
-        if(armor.isLegendary()){
-
-            armorLegendary = false;
-
-        }
+    public void unequipArmor(){
+        this.magDef -= job.getBaseMagDef();
+        this.setMagDef -= job.getBaseMagDef();
+        this.physDef -= job.getBasePhysDef();
+        this.setPhysDef -= job.getBasePhysDef();
+        this.evade = 0;
+        armorLegendary = false;
 
     }
 

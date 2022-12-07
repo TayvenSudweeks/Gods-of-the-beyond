@@ -25,7 +25,9 @@ public class Game {
     private int chosenBattleOption;
     private int turn;
     boolean gameOver;
-    String reward;
+    private String rewardType;
+    Weapon rewardWeapon;
+    Armor rewardArmor;
 
     public int getStates() {
 
@@ -405,6 +407,7 @@ public class Game {
                     int legendary = new Random().nextInt(50);
                     if(reward == 0){
 
+                        this.rewardType = "armor";
                         Armor loot;
 
                         if(legendary >= 49 || currentRoom.chosenMonster.isBoss()){
@@ -417,11 +420,12 @@ public class Game {
 
                         }
 
-                        this.reward = loot.getName();
+                        this.rewardArmor = loot;
 
                     }
                     else{
 
+                        this.rewardType = "weapon";
                         Weapon loot;
 
                         if(legendary >= 49 || currentRoom.chosenMonster.isBoss()){
@@ -434,7 +438,7 @@ public class Game {
 
                         }
 
-                        this.reward = loot.getWeaponName();
+                        this.rewardWeapon = loot;
 
                     }
                     if(currentRoom.chosenMonster.isBoss()){
@@ -463,25 +467,24 @@ public class Game {
                         gameProgress = 1;
 
                     }
+                    currentRoom.battle.endFight(characters[0], characters[1], characters[2]);
                     states++;
 
                 }
-                else{
 
-                    int randomTarget = new Random().nextInt(3);
-                    currentRoom.battle.randomMonsterAttack(currentRoom.chosenMonster, characters[randomTarget], characters[0], characters[1], characters[2]);
-                    if(characters[0].dead && characters[1].dead && characters[2].dead){
+            }
+            else if(states == 2){
 
-                        gameOver = true;
+                if(Integer.parseInt(input) == 1){
 
-                    }
-                    else{
-
-                        turn = 1;
-
-                    }
+                    equipReward();
 
                 }
+                states = 1;
+
+            }
+            else{
+
 
 
             }
@@ -495,6 +498,43 @@ public class Game {
     public int getCharacterIndex() {
 
         return characterIndex;
+
+    }
+
+    public void equipReward(){
+
+        int characterReward = 0;
+
+        if(rewardType == "weapon"){
+
+            for(int x = 0; x < 3; x++){
+
+                if(characters[x].job.name.contains(rewardWeapon.getJobReq())){
+
+                    characterReward = x;
+
+                }
+
+            }
+            characters[characterReward].unequipWeapon();
+            characters[characterReward].equipWeapon(rewardWeapon);
+
+        }
+        else{
+
+            for(int x = 0; x < 3; x++){
+
+                if(characters[x].job.name.contains(rewardArmor.getJobReq())){
+
+                    characterReward = x;
+
+                }
+
+            }
+            characters[characterReward].unequipArmor();
+            characters[characterReward].equipArmor(rewardArmor);
+
+        }
 
     }
 
