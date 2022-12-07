@@ -98,18 +98,18 @@ public class Weapon {
         } else if(weaponName == "dagger"){
             this.strVal = 5;
             this.magVal = 3;
-            this.accVal = 85;
+            this.accVal = 80;
             this.jobReq = "mercenary";
         } else if(weaponName == "hidden blade"){
-            this.strVal = 4;
-            this.magVal = 4;
-            this.accVal = 85;
+            this.strVal = 5;
+            this.magVal = 5;
+            this.accVal = 80;
             this.jobReq = "mercenary";
             this.legendary = true;
         } else if(weaponName == "shank"){
-            this.strVal = 6;
+            this.strVal = 7;
             this.magVal = 2;
-            this.accVal = 80;
+            this.accVal = 70;
             this.jobReq = "mercenary";
         } else if(weaponName == "balisong") {
             this.strVal = 4;

@@ -25,8 +25,8 @@ public class Monster {
             this.roomtype = "prison";
         } else if(monsterName == "skeleton"){
             this.monsterName = monsterName;
-            this.maxReso = 35;
-            this.currReso = 35;
+            this.maxReso = 36;
+            this.currReso = 36;
             this.PhysAtk = 6;
             this.MagAtk = 1;
             this.spd = 3;
@@ -75,8 +75,8 @@ public class Monster {
             this.boss = true;
         } else if(monsterName == "cult leader"){
             this.monsterName = monsterName;
-            this.maxReso = 45;
-            this.currReso = 45;
+            this.maxReso = 46;
+            this.currReso = 46;
             this.PhysAtk = 7;
             this.MagAtk = 7;
             this.spd = 3;
