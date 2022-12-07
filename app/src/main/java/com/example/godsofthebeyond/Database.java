@@ -4,7 +4,6 @@ import java.util.Random;
 
 public class Database {
 
-    private int weaponCount;
     Weapon[] weapons = new Weapon[25];
     Armor[] armors = new Armor[15];
     Monster[] monsters = new Monster[11];
@@ -125,23 +124,6 @@ public class Database {
         return reward;
     }
 
-    public Monster makeFodderMonster(String roomReq){
-        Monster spawn = new Monster();
-        spawn = getRandomMonster();
-        while(spawn.getRoomtype() != roomReq || spawn.isBoss() || spawn.getRoomtype() == "all"){
-            spawn = getRandomMonster();
-        }
-        return spawn;
-    }
-
-    public Monster makeBossMonster(String roomReq){
-        Monster spawn = new Monster();
-        spawn = getRandomMonster();
-        while(spawn.getRoomtype() != roomReq || !spawn.isBoss()){
-            spawn = getRandomMonster();
-        }
-        return spawn;
-    }
 
     public Monster makeFinalBoss(){
         return finalBoss;
