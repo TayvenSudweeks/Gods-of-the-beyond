@@ -24,6 +24,7 @@ public class Game {
     private boolean belfryDoorOpen = true;
     private int chosenBattleOption;
     private int turn;
+    private boolean firstTime = true;
     boolean gameOver;
     private String rewardType;
     Weapon rewardWeapon;
@@ -103,25 +104,44 @@ public class Game {
         }
         else if(gameProgress == 1){
 
-            return "Your party makes it to the front of the church. " + characters[1].name + " feels a chill run down their spine as they enter the building. " +
-                    "It is dark and clammy, with one torch faintly glowing near a set of doors at the back of the foyer. The middle door is noticeably larger than the others, " +
-                    "and it's clear that it's more important. " + characters[2].name + " walks up to the door and tests the handle, bracing in case of a trap. " +
-                    "No traps are activated, yet the door stays shut. As they look around, they notice four keyholes, each with a symbol that corresponds to one on each of the other doors. " +
-                    "Which do you enter first?";
+            if(firstTime) {
+                firstTime = false;
+                return "Your party makes it to the front of the church. " + characters[1].name + " feels a chill run down their spine as they enter the building. " +
+                        "It is dark and clammy, with one torch faintly glowing near a set of doors at the back of the foyer. The middle door is noticeably larger than the others, " +
+                        "and it's clear that it's more important. " + characters[2].name + " walks up to the door and tests the handle, bracing in case of a trap. " +
+                        "No traps are activated, yet the door stays shut. As they look around, they notice four keyholes, each with a symbol that corresponds to one on each of the other doors. " +
+                        "Which do you enter first?";
+            }
+            else{
+                return "You've made it back to the foyer. Where do you go next?";
+            }
         }
         else if(gameProgress == 2){
 
             String totalText;
             totalText = currentRoom.getRoomText();
-            if(currentRoom.getFight()) {
+            if(states == 2){
 
-                if(states == 1) {
+                String rewardText = "You Win!" + "\n" + "\n" + "You found a ";
+                if(rewardType == "weapon"){
 
-                    return totalText + "\n" + "\n" + currentRoom.getMonsterStats() + "\n" + "\n" + "Who attacks?";
+                    rewardText += rewardWeapon.getWeaponName() + " for a " + rewardWeapon.getJobReq() + ". What do you do?";
 
                 }
+                else{
+
+                    rewardText += rewardArmor.getName() + "for a " + rewardArmor.getJobReq() + ". What do you do?";
+
+                }
+                return rewardText;
 
             }
+            else if(currentRoom.getFight()) {
+
+                return totalText + "\n" + "\n" + currentRoom.getMonsterStats() + "\n" + "\n" + "What does " + (characters[turn - 1].name) + " do?";
+
+            }
+            return totalText;
 
         }
         return null;
@@ -176,9 +196,14 @@ public class Game {
         }
         else if(gameProgress == 2){
 
-            if(currentRoom.getFight()){
+            if(states == 2){
 
-                return "1: " + characters[0].name + "   2: " + characters[1].name + "   3: " + characters[2].name;
+                return "1: Equip It   2: Leave It";
+
+            }
+            else if(currentRoom.getFight()){
+
+                return "1: Attack   2: Spell   3: Ability   4: Legendary";
 
             }
             else{
@@ -295,8 +320,10 @@ public class Game {
 
                 }
 
-                chosenRoom = rooms[Integer.parseInt(input)];
+                chosenRoom = rooms[Integer.parseInt(input) - 1];
                 System.out.println(chosenRoom);
+                currentRoom.setRoomName(chosenRoom);
+                System.out.println(currentRoom.getRoomName());
                 currentRoom.runEvent();
                 gameProgress++;
 
@@ -305,9 +332,8 @@ public class Game {
         }
         else if(gameProgress == 2){
 
-            currentRoom.runEvent();
-            if(states == 2){
 
+            if(states == 2){
 
                 if(Integer.parseInt(input) == 1){
 
@@ -318,8 +344,10 @@ public class Game {
                 if(rewardArmor.isLegendary() || rewardWeapon.isLegendary()){
 
                     gameProgress = 1;
+                    return;
 
                 }
+                currentRoom.runEvent();
                 return;
 
             }
@@ -488,6 +516,8 @@ public class Game {
                     states++;
 
                 }
+                currentRoom.runEvent();
+                return;
 
             }
             else{
@@ -520,6 +550,7 @@ public class Game {
                 }
 
             }
+            currentRoom.runEvent();
 
         }
         else if(gameProgress == 3){

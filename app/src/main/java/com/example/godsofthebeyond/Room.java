@@ -127,6 +127,7 @@ public class Room {
                 this.roomType = "garden";
                 this.fight = true;
                 this.bossFight = true;
+
                 this.roomProgress++;
             } else {
                 int newRoom = new Random().nextInt(3);
