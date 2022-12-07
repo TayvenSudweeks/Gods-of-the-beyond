@@ -23,12 +23,12 @@ public class Game {
     private boolean prisonDoorOpen = true;
     private boolean belfryDoorOpen = true;
     private int chosenBattleOption;
-    private int turn;
+    private int turn = 1;
     private boolean firstTime = true;
     boolean gameOver;
     private String rewardType;
-    Weapon rewardWeapon;
-    Armor rewardArmor;
+    Weapon rewardWeapon = new Weapon();
+    Armor rewardArmor = new Armor();
 
     public int getStates() {
 
@@ -122,7 +122,7 @@ public class Game {
             totalText = currentRoom.getRoomText();
             if(states == 2){
 
-                String rewardText = "You Win!" + "\n" + "\n" + "You found a ";
+                String rewardText = "You Win!" + "\n" + "\n" + " You found a ";
                 if(rewardType == "weapon"){
 
                     rewardText += rewardWeapon.getWeaponName() + " for a " + rewardWeapon.getJobReq() + ". What do you do?";
@@ -324,6 +324,7 @@ public class Game {
                 System.out.println(chosenRoom);
                 currentRoom.setRoomName(chosenRoom);
                 System.out.println(currentRoom.getRoomName());
+                currentRoom.setMonsters();
                 currentRoom.runEvent();
                 gameProgress++;
 
@@ -331,7 +332,6 @@ public class Game {
 
         }
         else if(gameProgress == 2){
-
 
             if(states == 2){
 
@@ -358,7 +358,7 @@ public class Game {
                     currentRoom.setMonsters();
 
                 }
-                if(turn <= 4){
+                if(turn <= 3){
 
                     chosenBattleOption = Integer.parseInt(input);
                     switch(chosenBattleOption) {
@@ -443,6 +443,7 @@ public class Game {
                                 error = true;
 
                             }
+                            break;
                     }
                 }
                 if(currentRoom.getChosenMonster().dead){
@@ -513,10 +514,17 @@ public class Game {
 
                     }
                     currentRoom.battle.endFight(characters[0], characters[1], characters[2]);
+                    currentRoom.runEvent();
                     states++;
 
                 }
-                currentRoom.runEvent();
+                else{
+
+                    int randomTarget = new Random().nextInt(3);
+                    currentRoom.battle.randomMonsterAttack(currentRoom.chosenMonster, characters[randomTarget], characters[0], characters[1], characters[2]);
+                    turn = 1;
+
+                }
                 return;
 
             }
@@ -578,6 +586,7 @@ public class Game {
                 if(characters[x].job.name.contains(rewardWeapon.getJobReq())){
 
                     characterReward = x;
+                    break;
 
                 }
 
@@ -593,6 +602,7 @@ public class Game {
                 if(characters[x].job.name.contains(rewardArmor.getJobReq())){
 
                     characterReward = x;
+                    break;
 
                 }
 

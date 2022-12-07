@@ -40,29 +40,37 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void SubmitText(View view){
-        game.gameEvents(etInput.getText().toString());
-        if(game.gameOver){
 
-            etInput.setText("");
-            etInput.setEnabled(false);
-            characterTexts[0].setText("");
-            characterTexts[1].setText("");
-            characterTexts[2].setText("");
-            tvOptions.setText("");
-            output.setText(game.gameOver());
+        if(etInput.getText().toString().isEmpty()){
+
+            Toast toast = Toast.makeText(getApplicationContext(), "Nothing entered.", Toast.LENGTH_SHORT);
+            toast.show();
 
         }
         else {
-            etInput.setText("");
-            updateCharacters();
-            output.setText(game.gameText());
-            tvOptions.setText((game.choicesText()));
-            if (game.error) {
+            game.gameEvents(etInput.getText().toString());
+            if (game.gameOver) {
 
-                Toast toast = Toast.makeText(getApplicationContext(), "Please enter a valid input.", Toast.LENGTH_SHORT);
-                toast.show();
-                game.error = false;
+                etInput.setText("");
+                etInput.setEnabled(false);
+                characterTexts[0].setText("");
+                characterTexts[1].setText("");
+                characterTexts[2].setText("");
+                tvOptions.setText("");
+                output.setText(game.gameOver());
 
+            } else {
+                etInput.setText("");
+                updateCharacters();
+                output.setText(game.gameText());
+                tvOptions.setText((game.choicesText()));
+                if (game.error) {
+
+                    Toast toast = Toast.makeText(getApplicationContext(), "Please enter a valid input.", Toast.LENGTH_SHORT);
+                    toast.show();
+                    game.error = false;
+
+                }
             }
         }
     }
@@ -70,16 +78,27 @@ public class MainActivity extends AppCompatActivity {
     public void updateCharacters(){
 
         int charID = 0;
-        while(charID < 4 && game.getCharacterIndex() != 0){
+        if (game.getGameProgress() == 0) {
+            while (charID < 4 && game.getCharacterIndex() != 0) {
 
-            if(charID  >= game.getCharacterIndex()){
-                return;
-            } else {
-                characterTexts[charID].setText(game.characters[charID].toString());
-                charID++;
+                if (charID >= game.getCharacterIndex()) {
+                    return;
+                } else {
+                    characterTexts[charID].setText(game.characters[charID].toString());
+                    charID++;
+                }
             }
         }
+        else {
 
+            while (charID < 4){
+
+                characterTexts[charID].setText(game.characters[charID].toString());
+                charID++;
+
+            }
+
+        }
     }
 
 }

@@ -16,7 +16,7 @@ public class Character {
     private int physDef, setPhysDef;
     private int magDef, setMagDef;
     private int spd, setSpd;
-    private int acc;
+    private int acc = 85;
     private int evade;
     private boolean weaponLegendary = false;
     private boolean armorLegendary = false;
@@ -113,10 +113,10 @@ public class Character {
     }
 
     public void equipArmor(Armor armor){
-        this.magDef += armor.getMagDef();
-        this.setMagDef += armor.getMagDef();
-        this.physDef += armor.getPhysDef();
-        this.setPhysDef += armor.getPhysDef();
+        this.magDef = this.magDef + armor.getMagDef();
+        this.setMagDef = this.magDef + armor.getMagDef();
+        this.physDef = this.physDef + armor.getPhysDef();
+        this.setPhysDef = this.physDef + armor.getPhysDef();
         this.evade = armor.getEvade();
         if(armor.isLegendary()){
 
