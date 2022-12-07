@@ -53,7 +53,7 @@ public class Room {
         }
 
         Random random = new Random();
-        chosenMonster = monsters[random.nextInt(5)];
+        chosenMonster = monsters[random.nextInt(4)];
         fightStart = false;
 
     }
@@ -62,6 +62,7 @@ public class Room {
 
         String chosenMonsterStats = chosenMonster.getMonsterName() + "\n" +
                 chosenMonster.getCurrReso() + "/" + chosenMonster.getMaxReso();
+        System.out.println(chosenMonsterStats);
 
         return chosenMonsterStats;
 
@@ -175,7 +176,7 @@ public class Room {
                 this.bossFight = true;
             } else {
                 int newRoom = new Random().nextInt(3);
-                switch (newRoom) {
+                switch (1) {
                     case 0: {
                         this.roomText = "Your party is stumbling through the dark, concrete pathways of the prison," + "\n" +
                                 "when a deep haunted moaning echoes through the bars.";

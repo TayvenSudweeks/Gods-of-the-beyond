@@ -16,7 +16,7 @@ public class Character {
     private int physDef, setPhysDef;
     private int magDef, setMagDef;
     private int spd, setSpd;
-    private int acc;
+    private int acc = 85;
     private int evade;
     private boolean weaponLegendary = false;
     private boolean armorLegendary = false;

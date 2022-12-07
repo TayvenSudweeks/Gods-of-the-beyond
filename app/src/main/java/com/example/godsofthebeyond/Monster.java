@@ -103,11 +103,11 @@ public class Monster {
             this.monsterName = monsterName;
             this.maxReso = 1;
             this.currReso = 1;
-            this.PhysAtk = 14;
-            this.MagAtk = 14;
+            this.PhysAtk = 99;
+            this.MagAtk = 99;
             this.spd = 6;
             this.roomtype = "all";
-            this.boss = true;
+            this.boss = false;
         } else if(monsterName == "astoth"){
             this.monsterName = monsterName;
             this.maxReso = 150;

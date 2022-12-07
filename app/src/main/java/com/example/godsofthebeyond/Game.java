@@ -23,12 +23,12 @@ public class Game {
     private boolean prisonDoorOpen = true;
     private boolean belfryDoorOpen = true;
     private int chosenBattleOption;
-    private int turn;
+    private int turn = 1;
     private boolean firstTime = true;
-    boolean gameOver;
+    boolean gameOver = false;
     private String rewardType;
-    Weapon rewardWeapon;
-    Armor rewardArmor;
+    Weapon rewardWeapon = new Weapon();
+    Armor rewardArmor = new Armor();
 
     public int getStates() {
 
@@ -324,6 +324,7 @@ public class Game {
                 System.out.println(chosenRoom);
                 currentRoom.setRoomName(chosenRoom);
                 System.out.println(currentRoom.getRoomName());
+                currentRoom.setMonsters();
                 currentRoom.runEvent();
                 gameProgress++;
 
@@ -358,7 +359,7 @@ public class Game {
                     currentRoom.setMonsters();
 
                 }
-                if(turn <= 4){
+                if(turn < 3){
 
                     chosenBattleOption = Integer.parseInt(input);
                     switch(chosenBattleOption) {
@@ -444,6 +445,8 @@ public class Game {
 
                             }
                     }
+                } else if(turn >= 3){
+                    turn = 1;
                 }
                 if(currentRoom.getChosenMonster().dead){
 
@@ -578,7 +581,7 @@ public class Game {
                 if(characters[x].job.name.contains(rewardWeapon.getJobReq())){
 
                     characterReward = x;
-
+                    break;
                 }
 
             }
