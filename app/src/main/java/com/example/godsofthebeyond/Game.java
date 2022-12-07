@@ -307,7 +307,7 @@ public class Game {
                     currentRoom.setMonsters();
 
                 }
-                if(turn <= 4)
+                if(turn <= 4){
 
                     switch(states){
 

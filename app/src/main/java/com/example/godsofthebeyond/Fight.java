@@ -1151,10 +1151,11 @@ public class Fight {
         }
     }
 
-    public void strengthInator(Character char1, Character char2, Character user){
-        if(user.currSan > 0) {
+    public void strengthInator(Character char1, Character char2, Character char3, Character user){
+        if(user.currSan > 4) {
             char1.setPhysAtk(char1.getPhysAtk() + 2);
-            char1.setPhysAtk(char2.getPhysAtk() + 2);
+            char2.setPhysAtk(char2.getPhysAtk() + 2);
+            char3.setPhysAtk(char3.getPhysAtk() + 2);
             user.currSan = user.currSan - 4;
         }
     }
@@ -1175,10 +1176,14 @@ public class Fight {
         }
     }
 
-    public void threaten(Character user, Monster target){
-        if(user.currSan > 0) {
-            target.setSpd(target.getSpd() - 2);
-            user.currSan = user.currSan - 2;
+    public void assassinate(Character user, Monster target){
+        if(user.currSan > 4) {
+            if(!target.isBoss()) {
+                if(target.getCurrReso() <= target.getMaxReso() / 2){
+                    target.setCurrReso(0);
+                }
+                user.currSan = user.currSan - 4;
+            }
         }
     }
 
