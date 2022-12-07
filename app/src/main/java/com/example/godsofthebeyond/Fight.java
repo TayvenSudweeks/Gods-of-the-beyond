@@ -1135,10 +1135,10 @@ public class Fight {
         }
     }
 
-    public void taunt(Character user){
+    public void taunt(Character user, Monster target){
         if(user.currSan > 0) {
 
-            monsterTarget = user;
+            target.setMagAtk(target.getMagAtk() - 2);
             user.currSan = user.currSan - 2;
         }
     }
@@ -1192,16 +1192,14 @@ public class Fight {
         }
     }
 
-    public void chooseTarget(Monster m1, Character ch1, Character ch2, Character ch3){
+    public Character chooseTarget(Monster m1, Character ch1, Character ch2, Character ch3){
         int target = new Random().nextInt(3);
         switch (target) {
-            case 0: monsterTarget = ch1;
-            break;
-            case 1: monsterTarget = ch2;
-            break;
-            case 2: monsterTarget = ch3;
-            break;
+            case 0: return ch1;
+            case 1: return ch2;
+            case 2: return ch3;
         }
+        return null;
     }
 
 
@@ -1233,13 +1231,51 @@ public class Fight {
     }
 
     public void mendSelf(Monster m1){
-        m1.setCurrReso(m1.getCurrReso() + 25);
+        m1.setCurrReso(m1.getCurrReso() + 35);
         if(m1.getCurrReso() > m1.getMaxReso()){
             m1.setCurrReso(m1.getMaxReso());
         }
     }
 
-    public void randomMonsterAttack(Monster user, Character ch1, Character ch2, Character ch3){
-
+    public void randomMonsterAttack(Monster user, Character target, Character ch1, Character ch2, Character ch3){
+        int attack = new Random().nextInt();
+        while(!user.isBoss() && attack > 1){
+            attack = new Random().nextInt();
+        }
+        switch (attack) {
+            case 0:
+                monsterAttack(user, target);
+                break;
+            case 1:
+                monsterSpell(user, target);
+                break;
+            case 2:
+                if (user.getMonsterName() == "mass of vines" || user.getMonsterName() == "astoth") {
+                    acidSpray(ch1, ch2, ch3);
+                } else {
+                    randomMonsterAttack(user, target, ch1, ch2, ch3);
+                }
+                break;
+            case 3:
+                if (user.getMonsterName() == "jailer" || user.getMonsterName() == "astoth") {
+                    imprison(target);
+                } else {
+                    randomMonsterAttack(user, target, ch1, ch2, ch3);
+                }
+                break;
+            case 4:
+                if (user.getMonsterName() == "cult leader" || user.getMonsterName() == "astoth"){
+                    callUponGod(user);
+                } else {
+                    randomMonsterAttack(user, target, ch1, ch2, ch3);
+                }
+                break;
+            case 5: if(user.getMonsterName() == "eldritch draugr" || user.getMonsterName() == "astoth") {
+                mendSelf(user);
+            } else {
+                randomMonsterAttack(user, target, ch1, ch2, ch3);
+            }
+            break;
+        }
     }
 }

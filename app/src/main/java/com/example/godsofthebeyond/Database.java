@@ -128,7 +128,7 @@ public class Database {
     public Monster makeFodderMonster(String roomReq){
         Monster spawn = new Monster();
         spawn = getRandomMonster();
-        while(spawn.getRoomtype() != roomReq || spawn.isBoss()){
+        while(spawn.getRoomtype() != roomReq || spawn.isBoss() || spawn.getRoomtype() == "all"){
             spawn = getRandomMonster();
         }
         return spawn;

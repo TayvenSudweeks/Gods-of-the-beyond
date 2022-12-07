@@ -51,8 +51,8 @@ public class Room {
 
         }
 
-        Random random = new Random();
-        chosenMonster = monsters[random.nextInt(5)];
+        int random = new Random().nextInt(5);
+        chosenMonster = monsters[random];
         fightStart = false;
 
     }
