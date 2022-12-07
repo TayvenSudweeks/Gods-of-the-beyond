@@ -8,6 +8,7 @@ public class Fight {
     private int hitChance;
     private String first, second, third, fourth;
     private Character monsterTarget;
+    boolean spellFail;
 
     public String getFirst() {
         return first;
@@ -1114,6 +1115,9 @@ public class Fight {
                 target.setCurrReso(target.getMaxReso());
             }
             user.currSan = user.currSan - 2;
+            spellFail = false;
+        } else {
+            spellFail = true;
         }
     }
 
@@ -1122,6 +1126,9 @@ public class Fight {
 
             m1.setPhysAtk(m1.getPhysAtk() - 2);
             user.currSan = user.currSan - 2;
+            spellFail = false;
+        } else{
+            spellFail = true;
         }
     }
 
@@ -1132,22 +1139,31 @@ public class Fight {
                 m1.setCurrReso(m1.getCurrReso() - 14);
             }
             user.currSan = user.currSan - 3;
+            spellFail = false;
+        } else{
+            spellFail = true;
         }
     }
 
     public void taunt(Character user, Monster target){
-        if(user.currSan > 0) {
+        if(user.currSan > 2) {
 
             target.setMagAtk(target.getMagAtk() - 2);
             user.currSan = user.currSan - 2;
+            spellFail = false;
+        } else{
+            spellFail = true;
         }
     }
 
     public void valorForm(Character char1){
-        if(char1.currSan > 0) {
+        if(char1.currSan > 3) {
             char1.setPhysDef(char1.getPhysdef() - 3);
             char1.setPhysAtk(char1.getPhysAtk() + 3);
             char1.currSan = char1.currSan - 3;
+            spellFail = false;
+        } else{
+            spellFail = true;
         }
     }
 
@@ -1157,6 +1173,9 @@ public class Fight {
             char2.setPhysAtk(char2.getPhysAtk() + 2);
             char3.setPhysAtk(char3.getPhysAtk() + 2);
             user.currSan = user.currSan - 4;
+            spellFail = false;
+        } else{
+            spellFail = true;
         }
     }
 
@@ -1165,6 +1184,9 @@ public class Fight {
             char1.setPhysDef(char1.getPhysdef() + 3);
             char1.setMagDef(char1.getMagDef() + 3);
             char1.currSan = char1.currSan - 2;
+            spellFail = false;
+        } else{
+            spellFail = true;
         }
     }
 
@@ -1173,6 +1195,9 @@ public class Fight {
 
             char1.setAcc(100);
             char1.currSan = char1.currSan - 1;
+            spellFail = false;
+        } else{
+            spellFail = true;
         }
     }
 
@@ -1183,17 +1208,31 @@ public class Fight {
                     target.setCurrReso(0);
                 }
                 user.currSan = user.currSan - 4;
+                spellFail = false;
             }
+        } else{
+            spellFail = true;
         }
     }
 
-    public void herbalBrew(Character user, Character target){
+    public void herbalBrew(Character user, Character ch1, Character ch2, Character ch3){
         if(user.currSan > 0) {
-            target.setCurrReso(target.currReso + (user.getMagAtk() - 2));
-            if (target.currReso > target.getMaxReso()) {
-                target.setCurrReso(target.getMaxReso());
+            ch1.setCurrReso(ch1.currReso + (user.getMagAtk() - 2));
+            ch2.setCurrReso(ch2.currReso + (user.getMagAtk() - 2));
+            ch3.setCurrReso(ch3.currReso + (user.getMagAtk() - 2));
+            if (ch1.currReso > ch1.getMaxReso()) {
+                ch1.setCurrReso(ch1.getMaxReso());
+            }
+            if (ch2.currReso > ch2.getMaxReso()) {
+                ch2.setCurrReso(ch2.getMaxReso());
+            }
+            if (ch3.currReso > ch3.getMaxReso()) {
+                ch3.setCurrReso(ch3.getMaxReso());
             }
             user.currSan = user.currSan - 2;
+            spellFail = false;
+        } else{
+            spellFail = true;
         }
     }
 
