@@ -1107,12 +1107,20 @@ public class Fight {
 
     }*/
 
-    public void potionHeal(Character user, Character target){
+    public void potionHeal(Character ch1, Character ch2, Character ch3, Character user){
         if(user.currSan > 0) {
 
-            target.setCurrReso(target.currReso += user.getMagAtk());
-            if (target.currReso > target.getMaxReso()) {
-                target.setCurrReso(target.getMaxReso());
+            ch1.setCurrReso(ch1.currReso += user.getMagAtk());
+            if (ch1.currReso > ch1.getMaxReso()) {
+                ch1.setCurrReso(ch1.getMaxReso());
+            }
+            ch2.setCurrReso(ch2.currReso += user.getMagAtk());
+            if (ch2.currReso > ch2.getMaxReso()) {
+                ch2.setCurrReso(ch2.getMaxReso());
+            }
+            ch3.setCurrReso(ch3.currReso += user.getMagAtk());
+            if (ch3.currReso > ch3.getMaxReso()) {
+                ch3.setCurrReso(ch3.getMaxReso());
             }
             user.currSan = user.currSan - 2;
             spellFail = false;

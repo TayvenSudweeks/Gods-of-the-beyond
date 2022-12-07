@@ -407,6 +407,8 @@ public class Game {
                 }
 
 
+            } else{
+
             }
 
         }
@@ -418,5 +420,10 @@ public class Game {
 
         return characterIndex;
 
+    }
+
+    public String gameOver(){
+        return "As your final member falls, you hear the laughter of Astoth mocking you, and the final hope of the world collapses." + "\n" +
+                "THE END";
     }
 }
