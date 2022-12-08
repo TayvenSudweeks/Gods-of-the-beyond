@@ -26,6 +26,10 @@ public class Room {
 
     }
 
+    public void setRoomProgress(int roomProgress) {
+        this.roomProgress = roomProgress;
+    }
+
     public void setFinalBoss(){
         chosenMonster = new Monster("astoth");
     }
@@ -68,24 +72,29 @@ public class Room {
 
     public void setBosses(){
 
+        monsters[0] = new Monster("mass of vines");
+        monsters[1] = new Monster("cult leader");
+        monsters[2] = new Monster("eldritch draugr");
+        monsters[3] = new Monster("jailer");
+
         if(roomName == "garden"){
 
-            chosenMonster = new Monster("mass of vines");
+            chosenMonster = monsters[0];
 
         }
         else if(roomName == "belfry"){
 
-            chosenMonster = new Monster("cult leader");
+            chosenMonster = monsters[1];
 
         }
         else if(roomName == "catacombs"){
 
-            chosenMonster = new Monster("eldritch draugr");
+            chosenMonster = monsters[2];
 
         }
         else if(roomName == "prison"){
 
-            chosenMonster = new Monster("jailer");
+            chosenMonster = monsters[3];
 
         }
         fightStart = false;
@@ -161,7 +170,6 @@ public class Room {
                 this.roomType = "garden";
                 this.fight = true;
                 this.bossFight = true;
-
                 this.roomProgress++;
             } else if (roomProgress < ROOM_CLEAR){
                 int newRoom = new Random().nextInt(3);
@@ -174,7 +182,6 @@ public class Room {
                         this.roomOutcome1 = "Your party feels strangely invigorated, ready to face the oncoming dangers. ";
                         this.roomOutcome2 = "You cautiously walk around the dubious apple, and suddenly step into a trap!";
                         this.badOption = 2;
-                        roomProgress++;
                         break;
                     }
                     case 1: {
@@ -182,7 +189,6 @@ public class Room {
                         this.roomType = "garden";
                         this.fight = true;
                         this.bossFight = false;
-                        roomProgress++;
                         break;
                     }
                     case 2: {
@@ -191,17 +197,9 @@ public class Room {
                         this.roomOutcome1 = "You barely get out of the way in time, coming out unscathed.";
                         this.roomOutcome2 = "Well that was a bit stupid. You take a decent hit, but you're still okay.";
                         this.roomType = "garden";
-                        this.badOption = 2;
-                        roomProgress++;
                         break;
                     }
                 }
-            }
-            else{
-
-                roomName = "";
-                roomProgress = 0;
-
             }
         } else if (roomName == "prison") {
             //starts boss fight
@@ -226,7 +224,6 @@ public class Room {
                                 "'YOU FOOLS! HOW COULD YOU BE SO IGNORANT!' Terrified, you run, and your resolution begins to waver.";
                         this.roomOutcome2 = "You block the noise from your mind, trekking onward.";
                         this.badOption = 1;
-                        roomProgress++;
                         break;
                     }
                     case 1: {
@@ -234,7 +231,6 @@ public class Room {
                         this.roomType = "prison";
                         this.fight = true;
                         this.bossFight = false;
-                        roomProgress++;
                         break;
                     }
                     case 2: {
@@ -247,16 +243,9 @@ public class Room {
                         this.roomOutcome2 = "The handcuffs seems icy, and, too afraid to touch them, you move on.";
                         this.fight = false;
                         this.badOption = 1;
-                        roomProgress++;
                         break;
                     }
                 }
-            }
-            else{
-
-                roomName = "";
-                roomProgress = 0;
-
             }
         } else if (roomName == "belfry") {
             //starts boss fight
@@ -297,13 +286,6 @@ public class Room {
                         break;
                     }
                 }
-                roomProgress++;
-            }
-            else{
-
-                roomName = "";
-                roomProgress = 0;
-
             }
         } else if (roomName == "catacombs") {
             this.roomType = "catacombs";
@@ -324,12 +306,6 @@ public class Room {
                         break;
                     }
                 }
-            }
-            else{
-
-                roomName = "";
-                roomProgress = 0;
-
             }
         }
     }

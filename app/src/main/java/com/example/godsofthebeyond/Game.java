@@ -346,7 +346,25 @@ public class Game {
 
         }
         else if(gameProgress == 2){
+            if(states == 2){
 
+                if(Integer.parseInt(input) == 1) {
+                    equipReward();
+                }
+                if(currentRoom.chosenMonster.isBoss()){
+
+                    currentRoom.setRoomProgress(0);
+                    gameProgress = 1;
+
+                }
+                else{
+
+                    currentRoom.setRoomProgress(currentRoom.getRoomProgress() + 1);
+
+                }
+                states = 1;
+
+            }
             if(currentRoom.getFight()){
 
                 if(currentRoom.getFightStart()){
@@ -354,7 +372,7 @@ public class Game {
                     if (currentRoom.isBossFight()){
                         currentRoom.setBosses();
                     }
-                    else {
+                    else if(!currentRoom.isBossFight()){
                         currentRoom.setMonsters();
                     }
                 }
@@ -510,7 +528,6 @@ public class Game {
                             prisonDoorOpen = false;
 
                         }
-                        gameProgress = 1;
 
                     }
                     currentRoom.battle.endFight(characters[0], characters[1], characters[2]);
